@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var MessageSchema = mongoose.Schema({
-	email: 'String',
+	name: 'String',
 	content: 'String',
-	created: 'Date'
+	created: 'Date',
+	description: 'String'
 });
 
 exports.Message = mongoose.model('Message', MessageSchema);

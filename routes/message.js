@@ -12,9 +12,10 @@ exports.send = function(req, res) {
 
 
 	let message = new models.Message({
-		email: form_data.email,
+		name: form_data.name,
 		content: form_data.content,
 		created: date,
+		description: form_data.description
 	});
 
 	message.save(function(err){
