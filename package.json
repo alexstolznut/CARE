@@ -1,0 +1,31 @@
+{
+  "name": "cogs121-sp16-ass0",
+  "version": "1.0.0",
+  "description": "Github Repository for COGS 121 Spring 2016 - Assignment 0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "prestart": "mongod --dbpath dbpath --logpath log/mongod.log&"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vilanle/cogs121-sp16-ass0.git"
+  },
+  "author": "vilan le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vilanle/cogs121-sp16-ass0/issues"
+  },
+  "homepage": "https://github.com/vilanle/cogs121-sp16-ass0#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "consolidate": "^0.14.0",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "mongodb": "^2.1.14",
+    "mongoose": "^4.4.10"
+  }
+}
