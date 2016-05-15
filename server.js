@@ -13,7 +13,8 @@ var mongoose = require('mongoose');
 
 var router = {
     index: require("./routes/index"),
-    message: require("./routes/message")
+    message: require("./routes/message"),
+    newthread: require("./routes/newthread")
 };
 
 var parser = {
@@ -39,6 +40,7 @@ app.use(parser.body.json());
 
 // Routes
 app.get("/", router.index.view);
+app.get('/newthread', router.newthread.view);
 app.post("/message", router.message.send);
 
 // Start Server

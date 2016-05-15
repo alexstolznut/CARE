@@ -62,6 +62,7 @@
             <div class="col-lg-12">
 
                 <div class="container">
+
                       {{#if data}}
                       <div class="page-header page-heading">
                         <h1 class="pull-left">Forums</h1>
@@ -72,7 +73,10 @@
                         <div class="clearfix"></div>
                       </div>
 
-                      <p class="lead">This is the right place to discuss any ideas, critics, feature requests and all the ideas regarding our website. Please follow the forum rules and always check FAQ before posting to prevent duplicate posts.</p>
+                      <p class="lead">
+                        Feel free to post any questions that you have about mental illness here.
+                        <a href="newthread">Click to start a New thread here</a>
+                      </p>
                       <table class="table forum table-striped">
                         <thead>
                           <tr>
@@ -103,14 +107,6 @@
 
                     </div>
                 </div>
-
-
-                <form action="/message" method="post">
-                    Name(or Anon): <input type="text" name="email"><br>
-                    Comment: <textarea name="content"></textarea><br>
-                    <input type="submit" value="Submit">
-                </form>
-
             </div>
         </div>
         <!-- /.row -->
