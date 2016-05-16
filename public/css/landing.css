@@ -1,0 +1,27 @@
+body {
+    background-image: url(/image/map.png);    
+}
+
+#care {
+    text-align: center;
+    font-size: 200px;
+    margin-top: 10%;
+    color: white;
+    letter-spacing: 50px;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+#bnt {
+    text-align: center;
+}
+
+.bnt0 {
+    width: 10%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: white;
+    border: none;
+    border-radius: 2px;
+    margin-top: 30px;
+}

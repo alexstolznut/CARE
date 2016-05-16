@@ -34,14 +34,17 @@ app.set("port", process.env.PORT || 3000);
 app.engine("html", handlebars());
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(parser.body.urlencoded({ extended: false }));
 app.use(parser.body.json());
 
 // Routes
-app.get("/", router.index.view);
+app.get("/forums", router.index.view);
 app.get('/newthread', router.newthread.view);
 app.post("/message", router.message.send);
+app.get("/", function(req, res) {
+   res.render('landing', {}); 
+});
 
 // Start Server
 http.createServer(app).listen(app.get("port"), function() {
