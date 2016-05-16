@@ -5,25 +5,67 @@
 </head>
 <body>
     
+<!--  Landing  -->
     <div id="landing">
         <div id="quote">"One in five people in America suffer from bipolar disorder."</div>
         <div id="care">CARE</div>
-        <div id="bnt">
-            <button type="button" class="bnt0" style="margin-right: 4%px;" onclick="window.location='#explore';">EXPLORE</button>
+        <div class="bnt">
+            <button type="button" class="bnt0" style="margin-right: 4%;" onclick="window.location='#explore';">EXPLORE</button>
             <button type="button" class="bnt0" style="margin-left: 4%;" onclick="window.location='/forums';">LOGIN</button>
         </div>
         <div id="learnMore"><a href="#">Learn More</a></div>
     </div>
     
-    
+<!--  Explore  -->
     <div id="explore">
+        
         <nav id="navbar">
             <ul id="navbar-ul">
                 <li class="navbar-li"><a href="#">EXPLORE</a></li>
                 <li class="navbar-li" style="float: right;"><a href="#">LOGIN</a></li>
             </ul>
         </nav>
+    
+<!--  Overlay  -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="/image/button1.png" style="width: 10%; height: 10%; float: right;"></a>
+            <div class="overlay-content">
+                <form>
+                    <select id="inputBox" name="age">
+                        <option>18-30</option>
+                        <option>30-50</option>
+                        <option>50-100</option>
+                    </select>
+                    <select id="inputBox" name="gender" style="margin-top: 35px;">
+                        <option>Female</option>
+                        <option>Male</option>
+                    </select>
+                    <select id="inputBox" name="disorder" style="margin-top:35px;">
+                        <option>Bipolar</option>
+                        <option>Anxiety</option>
+                        <option>Self Infliction</option>
+                        <option>Impulse Control</option>
+                    </select>
+                    <div class="bnt">
+                    <button type="button" class="bnt1" style="margin-right: 4%;">Reset</button>
+            <button type="button" class="bnt1" style="margin-left: 4%;">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <span style="float:right;margin-right:15px;font-size:30px;cursor:pointer" onclick="openNav()"><img src="/image/button.png" style="width: 6%; height: 6%; float: right; padding-top: 2%;"></span>
     </div>
+    
+<script>
+    function openNav() {
+        document.getElementById("myNav").style.width = "25%";
+    }
+
+    function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+    }
+</script>
 
 </body>
 </html>
