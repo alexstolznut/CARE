@@ -150,6 +150,7 @@ body {
   }
 }
 
+/*--- Age, Gender, Disorder box ----*/
 #inputBox {
     width: 60%;
     height: 6vh;
@@ -158,6 +159,7 @@ body {
     border-radius: 10px;
 }
 
+/*--- Reset and Filter buttons ---*/
 .bnt1 {
     width: 20%;
     padding: 6px;
@@ -168,3 +170,45 @@ body {
     margin-top: 30px;
 }
 
+/*--- Learn More page ---*/
+#aboutTeam {
+    width: 100%;
+    height: 100vh;
+    background-color: darkgray;
+}
+
+#teamImage {
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+}
+
+.singleImage {
+    margin-top: 2vh;
+    margin-left: 1.7%;
+    float: left;
+    width: 18%;
+    height: 46vh;
+    background-color: azure;
+}
+
+#teamInfo {
+    width: 100%;
+    height: 42.5vh;
+}
+
+.aboutGoal {
+    width: 49%;
+    height: 100%;
+    float: left;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    text-align: center;
+}
+
+.infoContent {
+    margin-top: 5vh;
+    width: 70%;
+    color: white;
+    font-family: sans-serif;
+}

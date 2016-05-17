@@ -13,7 +13,7 @@
             <button type="button" class="bnt0" style="margin-right: 4%;" onclick="window.location='#explore';">EXPLORE</button>
             <button type="button" class="bnt0" style="margin-left: 4%;" onclick="window.location='/forums';">LOGIN</button>
         </div>
-        <div id="learnMore"><a href="#">Learn More</a></div>
+        <div id="learnMore"><a href="#aboutTeam">Learn More</a></div>
     </div>
     
 <!--  Explore  -->
@@ -57,6 +57,50 @@
         <span style="float:right;margin-right:15px;font-size:30px;cursor:pointer" onclick="openNav()"><img src="/image/button.png" style="width: 6%; height: 6%; float: right; padding-top: 2%;"></span>
     </div>
     
+<!--  Learn More  -->
+    <div id="aboutTeam">
+        <nav id="navbar" style="background:rgba(0,0,0,0.63);">
+            <ul id="navbar-ul">
+                <li class="navbar-li"><a href="#">CARE</a></li>
+                <li class="navbar-li" style="float: right;"><a href="#">LOGIN</a></li>
+                <li class="navbar-li" style="float: right;"><a href="#">EXPLORE</a></li>
+            </ul>
+        </nav>
+        
+        <div id="teamImage">
+            <div class="singleImage">
+            </div>
+            <div class="singleImage">
+            </div>
+            <div class="singleImage">
+            </div>
+            <div class="singleImage">
+            </div>
+            <div class="singleImage">
+            </div>
+        </div>
+        
+        <div id="teamInfo">
+            <div class="aboutGoal">
+                <div class="infoContent" style="margin-left: 20%;">
+                    <h2>Our Team</h2>
+                    <p style="text-align: justify;">
+                    The people behind CARE is a team of undergraduate students at the University of California, San Diego who specialize in engineering and user centered design. Our goal is to give our users the best data in an organized, visually appealing and easy to read fashion.
+                    </p>
+                </div>
+            </div>
+            <div class="aboutGoal">
+                <div class="infoContent" style="margin-left: 10%;">
+                    <h2>Our Goal</h2>
+                    <p style="text-align: justify;">
+                        CARE wants to inform users about mental illness, in a way that will encourage them to ask questions. CARE welcomes all users, but tries to target those who currently are suffering from a mental illness and want support, people who just want to support those struggling with a mental illness, and even doctors if they wish to participate. CARE is a safe platform for anyone who has ever felt alone.
+                    </p>
+                </div>    
+            </div>            
+        </div>
+    </div>
+    
+<!--  Overlay Script  -->
 <script>
     function openNav() {
         document.getElementById("myNav").style.width = "25%";
