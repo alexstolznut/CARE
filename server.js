@@ -43,7 +43,14 @@ app.get("/forums", router.index.view);
 app.get('/newthread', router.newthread.view);
 app.post("/message", router.message.send);
 app.get("/", function(req, res) {
-   res.render('landing', {}); 
+   res.render('landing', {});
+});
+
+app.get('/delphidata', function(req,res){
+
+  var consString = process.env.DATABASE_CONNECTION_URL;
+
+  var query = "SELECT Geography as zip, Total_Cases as totalCasesOfAnxiety FROM public.hhsa_anxiety_hospitalizations_aggr_2010_2012 WHERE Year>"
 });
 
 // Start Server
