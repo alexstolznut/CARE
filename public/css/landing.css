@@ -72,6 +72,7 @@ body {
     height: 100vh;
     background-image: url(/image/map.png); 
     background-size: cover;
+    position: relative;
 }
 
 #navbar {
@@ -101,9 +102,9 @@ body {
 
 /*---- Overlay ------*/
 .overlay {
-    height: 100vh;
+    height: 92.5vh;
     width: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 0;
     right: 0;
