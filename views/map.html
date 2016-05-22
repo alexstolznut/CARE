@@ -54,8 +54,8 @@
 
             <form id="clinic-form">
                 <fieldset class="form-group">
-                    <label for="starting">Starting Point</label>
-                    <input type="text" class="form-control" id="starting" placeholder="clinic" required>
+                    <label for="starting">Your Location</label>
+                    <input type="text" class="form-control" id="location" placeholder="clinic" required>
                     <br>
                 </fieldset>
 
@@ -80,15 +80,15 @@
 
         var autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */
-            (document.getElementById('starting')), {
+            (document.getElementById('location')), {
                 types: ['geocode']
             });
         }
 
         $('#clinic-form').submit(function(e) {
             e.preventDefault();
-            var starting = $('#starting').val();
-            window.location.href = '/map?starting=' + starting;
+            var starting = $('#location').val();
+            // window.location.href = '/map?starting=' + starting;
         });
     </script>
 
