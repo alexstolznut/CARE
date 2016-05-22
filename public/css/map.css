@@ -6,6 +6,16 @@ body {
 }
 
 /*---- Landing Page -----*/
+.navbar.navbar-inverse.navbar-fixed-top {
+    font-family: Roboto;
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-size: 35px;
+
+}
+
 #map {
     width: 80%;
     height: 100%;
