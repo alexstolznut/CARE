@@ -10,6 +10,14 @@ body {
     float: left;
 }
 
+#title {
+    font-family: Roboto;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    font-size: 200px;
+}
+
 #landing {
     width: 100%;
     height: 100vh;
@@ -20,8 +28,10 @@ body {
 #quote {
     padding-top: 7%;
     text-align: center;
+    font-family: Roboto;
     color: white;
     font-size: 28px;
+    font-weight: 100;
     letter-spacing: 1px;
 }
 
