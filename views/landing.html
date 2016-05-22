@@ -2,114 +2,24 @@
 <html>
 <head>
     <link rel="stylesheet" href="/css/landing.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    
+
 <!--  Landing  -->
     <div id="landing">
         <div id="quote">"One in five people in America suffer from bipolar disorder."</div>
-        <div id="care">CARE</div>
-        <div class="bnt">
-            <button type="button" class="bnt0" style="margin-right: 4%;" onclick="window.location='#explore';">EXPLORE</button>
-            <button type="button" class="bnt0" style="margin-left: 4%;" onclick="window.location='/forums';">LOGIN</button>
-        </div>
-        <div id="learnMore"><a href="#aboutTeam">Learn More</a></div>
     </div>
-    
-<!--  Explore  -->
-    <div id="explore">
-        
-        <nav id="navbar">
-            <ul id="navbar-ul">
-                <li class="navbar-li"><a href="#">EXPLORE</a></li>
-                <li class="navbar-li" style="float: right;"><a href="#">LOGIN</a></li>
-            </ul>
-        </nav>
-    
-<!--  Overlay  -->
-        <div id="myNav" class="overlay">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="/image/button1.png" style="width: 10%; height: 10%; float: right;"></a>
-            <div class="overlay-content">
-                <form>
-                    <select id="inputBox" name="age">
-                        <option>18-30</option>
-                        <option>30-50</option>
-                        <option>50-100</option>
-                    </select>
-                    <select id="inputBox" name="gender" style="margin-top: 35px;">
-                        <option>Female</option>
-                        <option>Male</option>
-                    </select>
-                    <select id="inputBox" name="disorder" style="margin-top:35px;">
-                        <option>Bipolar</option>
-                        <option>Anxiety</option>
-                        <option>Self Infliction</option>
-                        <option>Impulse Control</option>
-                    </select>
-                    <div class="bnt">
-                    <button type="button" class="bnt1" style="margin-right: 4%;">Reset</button>
-            <button type="button" class="bnt1" style="margin-left: 4%;">Filter</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <span style="float:right;margin-right:15px;font-size:30px;cursor:pointer" onclick="openNav()"><img src="/image/button.png" style="width: 6%; height: 6%; float: right; padding-top: 2%;"></span>
-    </div>
-    
-<!--  Learn More  -->
-    <div id="aboutTeam">
-        <nav id="navbar" style="background:rgba(0,0,0,0.63);">
-            <ul id="navbar-ul">
-                <li class="navbar-li"><a href="#">CARE</a></li>
-                <li class="navbar-li" style="float: right;"><a href="#">LOGIN</a></li>
-                <li class="navbar-li" style="float: right;"><a href="#">EXPLORE</a></li>
-            </ul>
-        </nav>
-        
-        <div id="teamImage">
-            <div class="singleImage">
-            </div>
-            <div class="singleImage">
-            </div>
-            <div class="singleImage">
-            </div>
-            <div class="singleImage">
-            </div>
-            <div class="singleImage">
-            </div>
-        </div>
-        
-        <div id="teamInfo">
-            <div class="aboutGoal">
-                <div class="infoContent" style="margin-left: 20%;">
-                    <h2>Our Team</h2>
-                    <p style="text-align: justify;">
-                    The people behind CARE is a team of undergraduate students at the University of California, San Diego who specialize in engineering and user centered design. Our goal is to give our users the best data in an organized, visually appealing and easy to read fashion.
-                    </p>
-                </div>
-            </div>
-            <div class="aboutGoal">
-                <div class="infoContent" style="margin-left: 10%;">
-                    <h2>Our Goal</h2>
-                    <p style="text-align: justify;">
-                        CARE wants to inform users about mental illness, in a way that will encourage them to ask questions. CARE welcomes all users, but tries to target those who currently are suffering from a mental illness and want support, people who just want to support those struggling with a mental illness, and even doctors if they wish to participate. CARE is a safe platform for anyone who has ever felt alone.
-                    </p>
-                </div>    
-            </div>            
-        </div>
-    </div>
-    
-<!--  Overlay Script  -->
-<script>
-    function openNav() {
-        document.getElementById("myNav").style.width = "25%";
-    }
-
-    function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
-    }
-</script>
 
 </body>
 </html>

@@ -14,7 +14,9 @@ var mongoose = require('mongoose');
 var router = {
     index: require("./routes/index"),
     message: require("./routes/message"),
-    newthread: require("./routes/newthread")
+    newthread: require("./routes/newthread"),
+    map: require("./routes/map"),
+    learnmore: require("./routes/learnmore")
 };
 
 var parser = {
@@ -41,6 +43,8 @@ app.use(parser.body.json());
 // Routes
 app.get("/forums", router.index.view);
 app.get('/newthread', router.newthread.view);
+app.get('/map', router.map.view);
+app.get('/learnmore', router.learnmore.view);
 app.post("/message", router.message.send);
 app.get("/", function(req, res) {
    res.render('landing', {});
