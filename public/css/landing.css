@@ -15,7 +15,25 @@ body {
     font-weight: 500;
     text-align: center;
     color: white;
-    font-size: 200px;
+    font-size: 250px;
+    letter-spacing: 50px
+}
+
+.divider{
+    width:20px;
+    height:auto;
+    display:inline-block;
+}
+
+#but {
+    text-align: center;
+}
+
+.btn.btn-secondary.btn-lg {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 15px;
+    width: 200px;
 }
 
 #landing {
@@ -25,8 +43,21 @@ body {
     background-size: cover;
 }
 
+.a {
+    font-color: white;
+}
+
+#learnmore {
+    text-align: center;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+}
+
 #quote {
-    padding-top: 7%;
+    padding-top: 4%;
     text-align: center;
     font-family: Roboto;
     color: white;
