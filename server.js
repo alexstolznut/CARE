@@ -139,9 +139,24 @@ app.get("/", function(req, res) {
 
 app.get('/delphidata', function(req,res){
 
-  var consString = process.env.DATABASE_CONNECTION_URL;
+  var conString = process.env.DATABASE_CONNECTION_URL;
 
-  var query = "SELECT Geography as zip, Total_Cases as totalCasesOfAnxiety FROM public.hhsa_anxiety_hospitalizations_aggr_2010_2012 WHERE Year>"
+  var query = "SELECT ADDR as address FROM cogs121_16_raw.sandag_clinics_all_prj>";
+  pg.connect(conString, function(err, client, done) {
+
+  if(err) {
+    return console.error('error fetching client from pool', err);
+  }
+  client.query(query, function(err, result) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+    //console.log(result.rows);
+    //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
+    res.json(result.rows);
+    client.end();
+  });
+  });
 });
 
 /* Passport serialization here */
