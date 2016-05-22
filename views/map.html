@@ -51,51 +51,49 @@
 		<div id="map"></div>
 		<div id="filter">
             <div class="overlay-content">
-                <form>
-                    <select id="inputBox" name="age">
-                        <option>18-30</option>
-                        <option>30-50</option>
-                        <option>50-100</option>
-                    </select>
-                    <select id="inputBox" name="gender" style="margin-top: 35px;">
-                        <option>Female</option>
-                        <option>Male</option>
-                    </select>
-                    <select id="inputBox" name="disorder" style="margin-top:35px;">
-                        <option>Bipolar</option>
-                        <option>Anxiety</option>
-                        <option>Self Infliction</option>
-                        <option>Impulse Control</option>
-                    </select>
-                    <div class="bnt">
-                    <button type="button" class="bnt1" style="margin-right: 4%;">Reset</button>
-            		<button type="button" class="bnt1" style="margin-left: 4%;">Filter</button>
-                    </div>
-                </form>
+
+            <form id="clinic-form">
+                <fieldset class="form-group">
+                    <label for="starting">Starting Point</label>
+                    <input type="text" class="form-control" id="starting" placeholder="clinic" required>
+                    <br>
+                </fieldset>
+
+                <center>
+                    <br>
+                    <input type="submit" class="btn-lg btn-outline btn-submit text-uppercase" value="ROUTE ME">
+                </center>
+            </form>
             </div>
 		</div>
 
     </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-        async defer></script>
     <script>
-	    function openNav() {
-	        document.getElementById("myNav").style.width = "25%";
-	    }
 
-	    function closeNav() {
-	        document.getElementById("myNav").style.width = "0%";
-	    }
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 32.715738, lng: -117.1610838},
+            zoom: 9
+          });
 
-		function initMap() {
-		  var mapDiv = document.getElementById('map');
-		  var map = new google.maps.Map(mapDiv, {
-		    center: {lat: 32.715738, lng: -117.1610838},
-		    zoom: 9
-		  });
-		}
+        var autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('starting')), {
+                types: ['geocode']
+            });
+        }
+
+        $('#clinic-form').submit(function(e) {
+            e.preventDefault();
+            var starting = $('#starting').val();
+            window.location.href = '/map?starting=' + starting;
+        });
     </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv460IEdNuuTaGtHUXOAPuTF8O5K7Xpx0&libraries=places&callback=initMap"
+        async defer></script>
 
   </body>
 </html>
