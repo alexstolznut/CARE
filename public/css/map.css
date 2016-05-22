@@ -13,11 +13,45 @@ body {
     position: fixed;
 }
 
+#but {
+    text-align: center;
+}
+
+.btn-lg.btn-submit.btn-lg {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 15px;
+    width: 200px;
+}
+
+#header {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+}
+
+#location {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+#loca {
+    color: white;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 20px;
+}
+
 #filter{
     float:right;
     width:20%;
     height:100%;
-    background-color: gray;
+    background-color: #00091a;
+    padding:10px;
 }
 
 #landing {
@@ -139,6 +173,7 @@ body {
     width: 100%;
     text-align: center;
     margin-top: 30px;
+    font-family: Roboto;
 }
 
 .overlay a {
