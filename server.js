@@ -138,25 +138,32 @@ app.get("/", function(req, res) {
 });
 
 app.get('/delphidata', function(req,res){
-
+    
+    console.log("DATABASE");
+    
   var conString = process.env.DATABASE_CONNECTION_URL;
 
-  var query = "SELECT ADDR as address FROM cogs121_16_raw.sandag_clinics_all_prj>";
+//  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
   pg.connect(conString, function(err, client, done) {
 
   if(err) {
     return console.error('error fetching client from pool', err);
   }
-  client.query(query, function(err, result) {
+      
+  client.query("SELECT \"ADDR\" as address, \"CITY\" FROM cogs121_16_raw.sandag_clinics_all_prj", function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
-    //console.log(result.rows);
+      
+    console.log(result.rows);
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
+
     res.json(result.rows);
     client.end();
   });
   });
+
+  return { delphidata: "No data present." }
 });
 
 /* Passport serialization here */
