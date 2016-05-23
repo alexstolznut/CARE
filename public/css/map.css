@@ -242,6 +242,9 @@ body {
       float: left;
       position: fixed;
     }
+    .navbar-collapse{
+      margin-left: 60%;
+    }
 
   .btn-lg.btn-submit.btn-lg {
       font-family: Roboto;
