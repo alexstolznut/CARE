@@ -1,9 +1,21 @@
 body {
     background-color: black;
     margin: auto;
+    padding-top: 50px;
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 /*---- Landing Page -----*/
+.navbar.navbar-inverse.navbar-fixed-top {
+    font-family: Roboto;
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-size: 35px;
+    float: left;
+
+}
 #map {
     width: 50%;
     height: 90%;
