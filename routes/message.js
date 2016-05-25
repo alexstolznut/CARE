@@ -8,7 +8,7 @@ exports.insert = function(req, res) {
 	console.log(form_data);
 	var d = new Date();
 	new Date(1995, 11, 17);
-	var date = new Date(d.getFullYear().toString() + ", " + d.getMonth().toString() + ", " + d.getDate().toString());
+	var date = new Date();
 	//console.log(date); // help you see what is the date
 
 	// If this is a new parent thread, the level will be 0 and should have an empty array of replies
@@ -27,14 +27,14 @@ exports.insert = function(req, res) {
 
 		message.save(function(err, mess){
 			if (err) res.send(err);
-			else 
+			else
 			{
 				console.log(mess._id);
 				res.redirect('/forums');
 			}
 		});
 	}
-	
+
 	// If this is a reply to a parent thread, you want to add the _id
 	// to the replies array  of the parent and a thread to the database
 	else
@@ -53,7 +53,7 @@ exports.insert = function(req, res) {
 
 		message.save(function(err, mes){
 			if (err) res.send(err);
-			else 
+			else
 			{
 				// Push the thread onto the replies array of the parent thread
 				models.Message.findByIdAndUpdate(
@@ -67,10 +67,10 @@ exports.insert = function(req, res) {
     			);
 			}
 		});
-	} 
+	}
 
 }
-exports.parent = function(req, res) {	
+exports.parent = function(req, res) {
 	models.Message.findById( req.param("id") ).exec(function(err, mes){
 		if(err) res.send(err);
 		else res.json(mes);
@@ -81,6 +81,6 @@ exports.parent = function(req, res) {
 exports.children = function(req, res) {
 	models.Message.find({parentId: req.param("id")}).exec(function(err, mes){
 		if (err) res.send(err);
-		else res.json(mes);	
+		else res.json(mes);
 	});
 }
