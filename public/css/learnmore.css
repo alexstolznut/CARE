@@ -268,18 +268,35 @@ body {
     background-color: azure;
 }
 
+.goaltitle {
+    font-family: Montserrat;
+    font-weight: 700;
+}
 .aboutGoal {
     background-color: #D97F7F;
     padding: 50px;
-    font-family: Montserrat;
-    font-weight:
+    color: white;
+}
+
+p {
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 22px;
 }
 
 .aboutTeam {
     background-color: #00000;
     padding: 50px;
-    font-family: Montserrat;
 
+}
+
+.img-responsive.img-circle {
+    height: 180px;
+    border: 7px #EDEDED;
+}
+
+.aboutTeam img {
+    border: 7px #EDEDED;
 }
 
 /*#teamInfo {
