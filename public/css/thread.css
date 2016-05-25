@@ -1,0 +1,11 @@
+.level-0 {
+	border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+}
+.level-1 {
+	border-radius: 25px;
+	margin-left: 10px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+}

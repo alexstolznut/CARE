@@ -132,7 +132,14 @@ app.get("/forums", router.index.view);
 app.get('/newthread', router.newthread.view);
 app.get('/map', router.map.view);
 app.get('/learnmore', router.learnmore.view);
-app.post("/message", router.message.send);
+
+// Requests accepted for message API
+app.post("/message", router.message.insert);
+app.get("/api/message/parent", router.message.parent);
+app.get("/api/message/children", router.message.children);
+app.get("/test", function(req,res){res.render('thread',{})});
+//app.put("/api/message/:id(\\d+)", router.message.update);
+//app.delete("/api/message/:id(\\d+)", router.message.delete);
 app.get("/", function(req, res) {
    res.render('landing', {});
 });
