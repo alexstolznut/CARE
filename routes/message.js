@@ -62,7 +62,7 @@ exports.insert = function(req, res) {
         			{safe: true, upsert: true, new : true},
         			function(err, model) {
             			if(err) res.send(err);
-            			else res.redirect('/forums');
+            			else res.redirect('/thread?id='+form_data.top);
         			}
     			);
 			}
