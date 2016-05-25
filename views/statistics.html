@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/forums.css">
+    <link rel="stylesheet" href="/css/learnmore.css">
     <script type="text/javascript" src="/js/jquery.js"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -23,9 +22,7 @@
 
     <!--Monserrat Font -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
 </head>
-
 <body>
 
     <!-- Navigation -->
@@ -51,6 +48,9 @@
                         <a href="/forums">Forums</a>
                     </li>
                     <li>
+                        <a href="/statistics">Statistics</a>
+                    </li>
+                    <li>
                         <a href="/learnmore">Learn More</a>
                     </li>
                     <li>
@@ -63,57 +63,20 @@
         <!-- /.container -->
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
+
+    <div class="aboutGoal">
+        <div class="goaltitle"><center><h2>Our Goal</h2></center></div>
 
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            <div class="col-lg-8 col-lg-offset-2">
 
-                <div id="forums" class="container">
-                      <div class="page-header page-heading">
-                        <h1 class="pull-left">The Discussion Forums</h1>
-
-                        <div class="clearfix"></div>
-                      </div>
-
-                      <p class="lead">
-                        Feel free to post any questions or stories here. Click on a thread's title to see the discussion.
-                        <br><a href="newthread">Click to start a new thread here</a>
-                      </p>
-                      {{#if data}}
-                      <table class="table forum table-striped">
-                        <thead>
-                          <tr>
-                            <th class="cell-stat"></th>
-                            <th class="cell-stat-2x hidden-xs hidden-sm">Discussion Title:</th>
-
-                            <th class="cell-stat-2x hidden-xs hidden-sm">Created On:</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {{#each data}}
-                          <tr>
-                            <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
-                            <td>
-                              <h4><a href="/thread?id={{_id}}">{{content}}</a><br><small>{{description}}</small></h4>
-                            </td>
-
-                            <td class="hidden-xs hidden-sm">by <a href="#">{{name}}</a><br><small><i class="fa fa-clock-o"></i>{{created}}</small></td>
-                          </tr>
-                          {{/each}}
-                        </tbody>
-                      </table>
-                    {{/if}}
-
-                    </div>
-                </div>
+                <center><p> We at CARE wants to inform users about mental illness, in a way that will encourage them to ask questions. CARE welcomes all users, but tries to target those who currently are suffering from a mental illness and want support, people who just want to support those struggling with a mental illness, and even doctors if they wish to participate. CARE is a safe platform for anyone who has ever felt alone.
+                </p></center>
             </div>
         </div>
-        <!-- /.row -->
-
     </div>
 
-</body>
 
+
+</body>
 </html>

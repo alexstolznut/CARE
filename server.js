@@ -27,7 +27,8 @@ var router = {
     message: require("./routes/message"),
     newthread: require("./routes/newthread"),
     map: require("./routes/map"),
-    learnmore: require("./routes/learnmore")
+    learnmore: require("./routes/learnmore"),
+    statistics: require("./routes/statistics")
 };
 
 var parser = {
@@ -132,6 +133,7 @@ app.get("/forums", router.index.view);
 app.get('/newthread', router.newthread.view);
 app.get('/map', router.map.view);
 app.get('/learnmore', router.learnmore.view);
+app.get('/statistics', router.statistics.view);
 
 // Requests accepted for message API
 app.post("/message", router.message.insert);
@@ -146,9 +148,9 @@ app.get("/", function(req, res) {
 });
 
 app.get('/delphidata', function(req,res){
-    
+
     console.log("DATABASE");
-    
+
   var conString = process.env.DATABASE_CONNECTION_URL;
 
 //  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
@@ -157,12 +159,12 @@ app.get('/delphidata', function(req,res){
   if(err) {
     return console.error('error fetching client from pool', err);
   }
-      
+
   client.query("SELECT \"ADDR\" as address, \"CITY\" FROM cogs121_16_raw.sandag_clinics_all_prj", function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
-      
+
     console.log(result.rows);
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
 
