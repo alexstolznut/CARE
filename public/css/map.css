@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: white;
     margin: auto;
     padding-top: 50px;
     /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
@@ -70,7 +70,7 @@ body {
     float:right;
     width:20%;
     height:100%;
-    background-color: #00091a;
+    background-color: #A62424;
     padding:10px;
 }
 

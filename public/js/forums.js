@@ -30,12 +30,12 @@ $( document ).ready(function() {
             '<textarea type="textarea" id="description'+data._id+'" name="description" style="display:none;margin-top:10px">Description</textarea>'+
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
             '<input onclick = "showReply('+id+')" type="button" id = "cancel'+data._id+'" value="Cancel" style="margin-left: 5px;display:none">'+
-        '</form>'+  
+        '</form>'+
     '</div>';
 	}
 	function renderReplies(children)
 	{
-	
+
 	var template = '';
 	var i;
 	for(i = 0; i < children.length; i++)
@@ -43,7 +43,7 @@ $( document ).ready(function() {
 	  var data = children[i];
 	  var id = "'"+ data._id + "'";
 	  var c = getChildren(data._id);
-	 template += '<div class = "level-0">' +
+	 template += '<div class = "level-1">' +
      '<p><b>'+ data.name + '</b> RE:'+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
     	'<a href = "/thread?id='+data._id+'">See Full Conversation </a> | '+
@@ -58,7 +58,7 @@ $( document ).ready(function() {
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
                      '<input onclick = "showReply('+id+')" type="button" id = "cancel'+data._id+'" value="Cancel" style="margin-left: 5px;display:none">'+
 
-        '</form>'+  
+        '</form>'+
         renderChildren(c)+
     '</div>';
     	//console.log(template);
@@ -67,7 +67,7 @@ $( document ).ready(function() {
 	}
 	function renderChildren(children)
 	{
-	
+
 	var template = '';
 	var i;
 	for(i = 0; i < children.length; i++)
@@ -75,7 +75,7 @@ $( document ).ready(function() {
 	  var data = children[i];
 	  var id = "'"+ data._id + "'";
 	  var c = getChildren(data._id);
-	 template += '<div class = "level-1">' +
+	 template += '<div class = "level-2">' +
      '<p><b>'+ data.name + '</b> RE:RE:'+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
     	'<a href = "/thread?id='+data._id+'">See Full Conversation </a> | '+
@@ -98,18 +98,18 @@ $( document ).ready(function() {
 	}
 	function renderGrandChildren(children)
 	{
-	
+
 	var template = '';
 	var i;
 	for(i = 0; i < children.length; i++)
 	{
 	  var data = children[i];
 	  var id = "'"+ data._id + "'";
-	 template += '<div class = "level-2">' +
+	 template += '<div class = "level-3">' +
      '<p><b>'+ data.name + '</b> RE:RE:RE:'+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
     	'<a href = "/thread?id='+data._id+'">Continue This Thread to Reply &gt; </a>  '+
-   
+
     	'<form method="post" action="/message">'+
     		'<input type="hidden" name = "content" value="'+data.content+'">'+
     		'<input type="hidden" name = "level" value="'+ (data.level+1) +'">'+
@@ -143,7 +143,7 @@ $( document ).ready(function() {
     }
     var parent = getParent(getUrlParameter('id'));
     var parentHTML = renderParent(parent);
-    
+
     function getChildren(id){
     	var json;
     	$.ajax({
