@@ -26,16 +26,37 @@ body {
 
 }
 
+
+
 .level-0 {
-    border: 2px solid #73AD21;
-    padding: 20px;
+    font-family: Roboto;
 }
 .level-1 {
 	margin-left: 30px;
-    border: 2px solid #73AD21;
     padding: 20px;
+    font-family: Roboto;
 }.level-2 {
 	margin-left: 40px;
-    border: 2px solid #73AD21;
     padding: 20px;
+    font-family: Roboto;
+
+}.level-3 {
+    margin-left: 50px;
+    padding: 20px;
+    font-family: Roboto;
+}
+
+.level-0 h3 {
+    font-family: Roboto;
+    font-weight: 500;
+}
+
+.level-0 h1 {
+    font-family: Roboto;
+    font-weight: 700;
+}
+
+p {
+    font-family: Roboto;
+    font-weight: 300;
 }

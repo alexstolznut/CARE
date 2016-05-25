@@ -17,8 +17,11 @@ $( document ).ready(function() {
     function renderParent(data)
 	{
 	var id = "'"+ data._id + "'";
-	return '<div class = "level-0">' +
-     '<h3>'+data.content+'</h3>'+
+	return '<div class= "level-0">' +
+     '<h3>Discussion:</h3>'+
+
+     '<h1>'+data.content+'</h1>'+
+     '<p><b>Posted by '+ data.name + '</b><br>' +
     	'<p>'+ data.description+'</p>'+
     	'<a onclick = "showReply('+id+')">Reply</a>'+
     	'<form method="post" action="/message">'+
@@ -44,7 +47,7 @@ $( document ).ready(function() {
 	  var id = "'"+ data._id + "'";
 	  var c = getChildren(data._id);
 	 template += '<div class = "level-1">' +
-     '<p><b>'+ data.name + '</b> RE:'+data.content+'</p>'+
+     '<p><b>Posted by '+ data.name + '</b><br> RE: '+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
     	'<a href = "/thread?id='+data._id+'">See Full Conversation </a> | '+
     	'<a onclick = "showReply('+id+')">Reply</a>'+
@@ -76,7 +79,7 @@ $( document ).ready(function() {
 	  var id = "'"+ data._id + "'";
 	  var c = getChildren(data._id);
 	 template += '<div class = "level-2">' +
-     '<p><b>'+ data.name + '</b> RE:RE:'+data.content+'</p>'+
+     '<p><b>Posted by '+ data.name + '</b><br> RE:RE: '+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
     	'<a href = "/thread?id='+data._id+'">See Full Conversation </a> | '+
     	'<a onclick = "showReply('+id+')">Reply</a>'+
@@ -106,7 +109,7 @@ $( document ).ready(function() {
 	  var data = children[i];
 	  var id = "'"+ data._id + "'";
 	 template += '<div class = "level-3">' +
-     '<p><b>'+ data.name + '</b> RE:RE:RE:'+data.content+'</p>'+
+     '<p><b>Posted by '+ data.name + '</b><br> RE:RE:RE: '+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
     	'<a href = "/thread?id='+data._id+'">Continue This Thread to Reply &gt; </a>  '+
 
