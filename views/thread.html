@@ -60,7 +60,8 @@
     		{
     			document.getElementById("name"+id).style.display="block";
     			document.getElementById("description"+id).style.display="block";
-    			document.getElementById("submit"+id).style.display="block";
+    			document.getElementById("submit"+id).style.display="inline";
+                document.getElementById("cancel"+id).style.display="inline";
     			show = true;
     		}
     		else
@@ -68,6 +69,7 @@
     			document.getElementById("name"+id).style.display="none";
     			document.getElementById("description"+id).style.display="none";
     			document.getElementById("submit"+id).style.display="none";
+                document.getElementById("cancel"+id).style.display="none";
     			show = false;
     		}
     	}

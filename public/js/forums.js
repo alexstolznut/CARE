@@ -25,9 +25,11 @@ $( document ).ready(function() {
     		'<input type="hidden" name = "content" value="'+data.content+'">'+
     		'<input type="hidden" name = "level" value="'+ (data.level+1) +'">'+
     		'<input type="hidden" name = "parent_id" value="'+data._id+'">'+
-    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none">'+
-            '<input type="textarea" id="description'+data._id+'" name="description" style="display:none">'+
+    		'<input type="hidden" name = "top" value="'+getUrlParameter('id')+'">'+
+    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none" placeholder="Post as...">'+
+            '<textarea type="textarea" id="description'+data._id+'" name="description" style="display:none;margin-top:10px">Description</textarea>'+
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
+            '<input onclick = "showReply('+id+')" type="button" id = "cancel'+data._id+'" value="Cancel" style="margin-left: 5px;display:none">'+
         '</form>'+  
     '</div>';
 	}
@@ -42,16 +44,20 @@ $( document ).ready(function() {
 	  var id = "'"+ data._id + "'";
 	  var c = getChildren(data._id);
 	 template += '<div class = "level-0">' +
-     '<h3>'+data.content+'</h3>'+
+     '<p><b>'+ data.name + '</b> RE:'+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
+    	'<a href = "/thread?id='+data._id+'">See Full Conversation </a> | '+
     	'<a onclick = "showReply('+id+')">Reply</a>'+
     	'<form method="post" action="/message">'+
     		'<input type="hidden" name = "content" value="'+data.content+'">'+
     		'<input type="hidden" name = "level" value="'+ (data.level+1) +'">'+
     		'<input type="hidden" name = "parent_id" value="'+data._id+'">'+
-    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none">'+
-            '<input type="textarea" id="description'+data._id+'" name="description" style="display:none">'+
+    		'<input type="hidden" name = "top" value="'+getUrlParameter('id')+'">'+
+    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none" placeholder="Post as...">'+
+            '<textarea type="textarea" id="description'+data._id+'" name="description" style="display:none;margin-top:10px">Description</textarea>'+
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
+                     '<input onclick = "showReply('+id+')" type="button" id = "cancel'+data._id+'" value="Cancel" style="margin-left: 5px;display:none">'+
+
         '</form>'+  
         renderChildren(c)+
     '</div>';
@@ -70,16 +76,20 @@ $( document ).ready(function() {
 	  var id = "'"+ data._id + "'";
 	  var c = getChildren(data._id);
 	 template += '<div class = "level-1">' +
-     '<h3>'+data.content+'</h3>'+
+     '<p><b>'+ data.name + '</b> RE:RE:'+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
+    	'<a href = "/thread?id='+data._id+'">See Full Conversation </a> | '+
     	'<a onclick = "showReply('+id+')">Reply</a>'+
     	'<form method="post" action="/message">'+
     		'<input type="hidden" name = "content" value="'+data.content+'">'+
     		'<input type="hidden" name = "level" value="'+ (data.level+1) +'">'+
     		'<input type="hidden" name = "parent_id" value="'+data._id+'">'+
-    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none">'+
-            '<input type="textarea" id="description'+data._id+'" name="description" style="display:none">'+
+    		'<input type="hidden" name = "top" value="'+getUrlParameter('id')+'">'+
+    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none" placeholder="Post as...">'+
+            '<textarea type="textarea" id="description'+data._id+'" name="description" style="display:none;margin-top:10px">Description</textarea>'+
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
+                   '<input onclick = "showReply('+id+')" type="button" id = "cancel'+data._id+'" value="Cancel" style="margin-left: 5px;display:none">'+
+
         '</form>'+ renderGrandChildren(c) +
     '</div>';
     	//console.log(template);
@@ -96,16 +106,20 @@ $( document ).ready(function() {
 	  var data = children[i];
 	  var id = "'"+ data._id + "'";
 	 template += '<div class = "level-2">' +
-     '<h3>'+data.content+'</h3>'+
+     '<p><b>'+ data.name + '</b> RE:RE:RE:'+data.content+'</p>'+
     	'<p>'+ data.description+'</p>'+
-    	'<a onclick = "showReply('+id+')">Reply</a>'+
+    	'<a href = "/thread?id='+data._id+'">Continue This Thread to Reply &gt; </a>  '+
+   
     	'<form method="post" action="/message">'+
     		'<input type="hidden" name = "content" value="'+data.content+'">'+
     		'<input type="hidden" name = "level" value="'+ (data.level+1) +'">'+
     		'<input type="hidden" name = "parent_id" value="'+data._id+'">'+
-    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none">'+
-            '<input type="textarea" id="description'+data._id+'" name="description" style="display:none">'+
+    		'<input type="hidden" name = "top" value="'+getUrlParameter('id')+'">'+
+    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none" placeholder="Post as...">'+
+            '<textarea type="textarea" id="description'+data._id+'" name="description" style="display:none;margin-top:10px">Description</textarea>'+
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
+                    '<input onclick = "showReply('+id+')" type="button" id = "cancel'+data._id+'" value="Cancel" style="margin-left: 5px; display:none">'+
+
         '</form>' +
     '</div>';
     	//console.log(template);
