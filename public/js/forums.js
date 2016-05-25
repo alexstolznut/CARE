@@ -68,8 +68,8 @@ $( document ).ready(function() {
 	{
 	  var data = children[i];
 	  var id = "'"+ data._id + "'";
-
-	 template += '<div class = "level-'+(data.level-1)+'">' +
+	  var c = getChildren(data._id);
+	 template += '<div class = "level-1">' +
      '<h3>'+data.content+'</h3>'+
     	'<p>'+ data.description+'</p>'+
     	'<a onclick = "showReply('+id+')">Reply</a>'+
@@ -80,7 +80,33 @@ $( document ).ready(function() {
     		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none">'+
             '<input type="textarea" id="description'+data._id+'" name="description" style="display:none">'+
             '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
-        '</form>'+  
+        '</form>'+ renderGrandChildren(c) +
+    '</div>';
+    	//console.log(template);
+		}
+		return template;
+	}
+	function renderGrandChildren(children)
+	{
+	
+	var template = '';
+	var i;
+	for(i = 0; i < children.length; i++)
+	{
+	  var data = children[i];
+	  var id = "'"+ data._id + "'";
+	 template += '<div class = "level-2">' +
+     '<h3>'+data.content+'</h3>'+
+    	'<p>'+ data.description+'</p>'+
+    	'<a onclick = "showReply('+id+')">Reply</a>'+
+    	'<form method="post" action="/message">'+
+    		'<input type="hidden" name = "content" value="'+data.content+'">'+
+    		'<input type="hidden" name = "level" value="'+ (data.level+1) +'">'+
+    		'<input type="hidden" name = "parent_id" value="'+data._id+'">'+
+    		 '<input type="textarea" id="name'+data._id+'" name="name" style="display:none">'+
+            '<input type="textarea" id="description'+data._id+'" name="description" style="display:none">'+
+            '<input type="submit" id = "submit'+data._id+'" value="Reply" style="display:none">'+
+        '</form>' +
     '</div>';
     	//console.log(template);
 		}
