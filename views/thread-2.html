@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -10,17 +9,16 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <title></title>
-
+    <title>{{ data.content }}</title>
+    <link rel="stylesheet" href="/css/thread.css">
     <style>
     body {
-        padding-top: 70px;
+        padding-top: 50px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
 
 </head>
-
 <body>
 
     <!-- Navigation -->
@@ -46,7 +44,7 @@
                         <a href="#">Forums</a>
                     </li>
                     <li>
-                        <a href="#">Logout</a>
+                        <a href="/">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -54,38 +52,54 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-3"></div>
-
-        	<div class="col-md-6">
-
-			<center>
-			<h1> Make a New Thread </h1>
-			<form action="/message" method="post">
-
-				<fieldset class="form-group">
-				    Name (or anon): <input class="form-control" type="text" name="name"><br>
-				    Title:<textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
-				    Body:<textarea name="description" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
-                    <input type = "hidden" value = "0" name = "level">
-				    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-				</fieldset>
-
-
-			</form>
-			</center>
-			</div>
-
-			<div class="col-md-3"></div>
-        </div>
-        <!-- /.row -->
-
+    <div class = "level-0">
+    	<h3>{{ data.content }}</h3>
+    	<p>{{ data.description}}</p>
+    	<a onclick = "showReply('{{data._id}}');">Reply</a>
+    	<form method="post" action="/message">
+    		<input type="hidden" name = "content" value="{{data.content}}">
+    		<input type="hidden" name = "level" value="{{ level }}">
+    		<input type="hidden" name = "parent_id" value="{{data.id}}">
+    		 <input type="textarea" id="name{{data._id}}" name="name" style="display:none">
+            <input type="textarea" id="description{{data._id}}" name="description" style="display:none">
+            <input type="submit" id = "submit{{data._id}}" value="Reply" style="display:none">
+        </form>
+        
     </div>
-
+    {{#each replies}}
+    <div class = "level-0">
+        <h3>{{ content }}</h3>
+        <p>{{ description}}</p>
+        <a onclick = "showReply('{{_id}}');">Reply</a>
+        <form method="post" action="/message">
+            <input type="hidden" name = "content" value="{{content}}">
+            <input type="hidden" name = "level" value="{{ level }}">
+            <input type="hidden" name = "parent_id" value="{{_id}}">
+             <input type="textarea" id="name{{_id}}" name="name" style="display:none">
+            <input type="textarea" id="description{{_id}}" name="description" style="display:none">
+            <input type="submit" id = "submit{{_id}}" value="Reply" style="display:none">
+        </form>
+        
+    </div>
+    {{/each}}
+    <script type="text/javascript">
+    	var show = false;
+    	function showReply(id){
+    		if(!show)
+    		{
+    			document.getElementById("name"+id).style.display="block";
+    			document.getElementById("description"+id).style.display="block";
+    			document.getElementById("submit"+id).style.display="block";
+    			show = true;
+    		}
+    		else
+    		{
+    			document.getElementById("name"+id).style.display="none";
+    			document.getElementById("description"+id).style.display="none";
+    			document.getElementById("submit"+id).style.display="none";
+    			show = false;
+    		}
+    	}
+    </script>
 </body>
-
 </html>

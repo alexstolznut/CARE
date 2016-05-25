@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -10,17 +9,16 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <title></title>
-
+    <title>Test</title>
+    <link rel="stylesheet" href="/css/thread.css">
     <style>
     body {
-        padding-top: 70px;
+        padding-top: 50px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
 
 </head>
-
 <body>
 
     <!-- Navigation -->
@@ -46,7 +44,7 @@
                         <a href="#">Forums</a>
                     </li>
                     <li>
-                        <a href="#">Logout</a>
+                        <a href="/">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -54,38 +52,27 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-3"></div>
-
-        	<div class="col-md-6">
-
-			<center>
-			<h1> Make a New Thread </h1>
-			<form action="/message" method="post">
-
-				<fieldset class="form-group">
-				    Name (or anon): <input class="form-control" type="text" name="name"><br>
-				    Title:<textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
-				    Body:<textarea name="description" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
-                    <input type = "hidden" value = "0" name = "level">
-				    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-				</fieldset>
-
-
-			</form>
-			</center>
-			</div>
-
-			<div class="col-md-3"></div>
-        </div>
-        <!-- /.row -->
-
-    </div>
-
+    <div id = "display"></div>
+    <script type="text/javascript">
+    	var show = false;
+    	function showReply(id){
+    		if(!show)
+    		{
+    			document.getElementById("name"+id).style.display="block";
+    			document.getElementById("description"+id).style.display="block";
+    			document.getElementById("submit"+id).style.display="block";
+    			show = true;
+    		}
+    		else
+    		{
+    			document.getElementById("name"+id).style.display="none";
+    			document.getElementById("description"+id).style.display="none";
+    			document.getElementById("submit"+id).style.display="none";
+    			show = false;
+    		}
+    	}
+    </script>
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+<script src="/js/forums.js"></script>
 </body>
-
 </html>
