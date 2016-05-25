@@ -21,6 +21,9 @@
     <!--Lato Font-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
 
+    <!--Monserrat Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
@@ -66,9 +69,9 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="container">
+                <div id="forums" class="container">
                       <div class="page-header page-heading">
-                        <h1 class="pull-left">Forums</h1>
+                        <h1 class="pull-left">The Discussion Forums</h1>
                         <ol class="breadcrumb pull-right where-am-i">
                           <li><a href="#">Forums</a></li>
                           <li class="active">List of topics</li>
@@ -77,19 +80,17 @@
                       </div>
 
                       <p class="lead">
-                        Feel free to post any questions that you have about mental illness here.
-                        <a href="newthread">Click to start a New thread here</a>
+                        Feel free to post any questions or stories here. Click on a thread's title to see the discussion.
+                        <br><a href="newthread">Click to start a new thread here</a>
                       </p>
                       {{#if data}}
                       <table class="table forum table-striped">
                         <thead>
                           <tr>
                             <th class="cell-stat"></th>
-                            <th>
-                              <h3>Important</h3>
-                            </th>
-                            <th class="cell-stat text-center hidden-xs hidden-sm">Number of Comments</th>
-                            <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                            <th class="cell-stat-2x hidden-xs hidden-sm">Discussion Title:</th>
+
+                            <th class="cell-stat-2x hidden-xs hidden-sm">Created On:</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -99,7 +100,7 @@
                             <td>
                               <h4><a href="/thread?id={{_id}}">{{content}}</a><br><small>{{description}}</small></h4>
                             </td>
-                            <td class="text-center hidden-xs hidden-sm"><a href="#">Number of Comments Here</a></td>
+
                             <td class="hidden-xs hidden-sm">by <a href="#">{{name}}</a><br><small><i class="fa fa-clock-o"></i>{{created}}</small></td>
                           </tr>
                           {{/each}}

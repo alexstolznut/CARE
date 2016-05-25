@@ -26,6 +26,18 @@ body {
 
 }
 
+.page-header.page-heading h1{
+    font-family: Roboto;
+    font-weight: 700;
+}
+
+#forums {
+    font-family: Roboto;
+}
+
+.table-striped.tbody.tr:nth-of-type(2n+1) {
+    color: black;
+}
 #map {
     width: 80%;
     height: 100%;
