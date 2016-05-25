@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: white;
     margin: auto;
     padding-top: 50px;
     /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
@@ -7,8 +7,8 @@ body {
 
 /*---- Landing Page -----*/
 .navbar.navbar-fixed-top {
-    font-family: Lato;
-    background-color: white;
+    font-family: Montserrat;
+    background-color: #F6F6F6;
     border: none;
 }
 
@@ -20,7 +20,7 @@ body {
 
 .navbar-brand {
     font-weight: 900;
-    font-family: Lato;
+    font-family: Montserrat;
     font-size: 35px;
     float: left;
 
@@ -241,10 +241,14 @@ body {
 }
 
 /*--- Learn More page ---*/
+.item {
+    height: 100%;
+}
+
 #aboutTeam {
     width: 100%;
-    height: 200vh;
-    background-color: darkgray;
+    height: auto;
+    background-color: white;
 }
 
 #teamImage {
@@ -264,7 +268,38 @@ body {
     background-color: azure;
 }
 
-#teamInfo {
+.goaltitle {
+    font-family: Montserrat;
+    font-weight: 700;
+}
+.aboutGoal {
+    background-color: #D97F7F;
+    padding: 50px;
+    color: white;
+}
+
+p {
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.aboutTeam {
+    background-color: #00000;
+    padding: 50px;
+
+}
+
+.img-responsive.img-circle {
+    height: 180px;
+    border: 7px #EDEDED;
+}
+
+.aboutTeam img {
+    border: 7px #EDEDED;
+}
+
+/*#teamInfo {
     width: 100%;
     height: 42.5vh;
 }
@@ -285,3 +320,4 @@ body {
     font-family: sans-serif;
     font-weight: 100;
 }
+*/

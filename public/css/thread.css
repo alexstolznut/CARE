@@ -1,3 +1,23 @@
+.navbar.navbar-fixed-top {
+    font-family: Montserrat;
+    background-color: #F6F6F6;
+    border: none;
+}
+
+.nav.navbar-nav a:hover {
+    background-color: #E39090;
+    color: white;
+    text-shadow: none;
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-family: Montserrat;
+    font-size: 35px;
+    float: left;
+
+}
+
 .level-0 {
 	border-radius: 25px;
     border: 2px solid #73AD21;
