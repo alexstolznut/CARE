@@ -11,9 +11,9 @@
 
   <script type="text/javascript">
       var locations = [
-      ['220 S. 01st Street, El Cajon'],
-      ['7065 Broadway, San Diego'],
-      ['5201 Ruffin Road, San Diego']
+      ['220 S. 01st Street El Cajon'],
+      ['7065 Broadway San Diego'],
+      ['5201 Ruffin Road San Diego']
     ];
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -32,13 +32,13 @@
     }
 
 function geocodeAddress(location) {
-  geocoder.geocode( { 'address': location[0]}, function(results, status) {
+  geocoder.geocode( { 'address': location[1]}, function(results, status) {
   //alert(status);
     if (status == google.maps.GeocoderStatus.OK) {
 
       //alert(results[0].geometry.location);
       map.setCenter(results[0].geometry.location);
-      createMarker(results[0].geometry.location,location[0]+"<br>"+location[0]);
+      createMarker(results[0].geometry.location,location[0]+"<br>"+location[1]);
     }
     else
     {
