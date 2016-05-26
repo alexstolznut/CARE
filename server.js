@@ -27,7 +27,8 @@ var router = {
     message: require("./routes/message"),
     newthread: require("./routes/newthread"),
     map: require("./routes/map"),
-    learnmore: require("./routes/learnmore")
+    learnmore: require("./routes/learnmore"),
+    statistics: require("./routes/statistics")
 };
 
 var parser = {
@@ -132,13 +133,28 @@ app.get("/forums", router.index.view);
 app.get('/newthread', router.newthread.view);
 app.get('/map', router.map.view);
 app.get('/learnmore', router.learnmore.view);
-app.post("/message", router.message.send);
+app.get('/statistics', router.statistics.view);
+
+// Requests accepted for message API
+app.post("/message", router.message.insert);
+app.get("/api/message/parent", router.message.parent);
+app.get("/api/message/children", router.message.children);
+
+app.get("/thread", function(req,res){res.render('thread',{})});
+//app.put("/api/message/:id(\\d+)", router.message.update);
+//app.delete("/api/message/:id(\\d+)", router.message.delete);
 app.get("/", function(req, res) {
    res.render('landing', {});
 });
 
 app.get('/delphidata', function(req,res){
+<<<<<<< HEAD
         
+=======
+
+    console.log("DATABASE");
+
+>>>>>>> a34435f6999f41f52e87d177922d73b1f633cae3
   var conString = process.env.DATABASE_CONNECTION_URL;
 
 //  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
@@ -147,13 +163,13 @@ app.get('/delphidata', function(req,res){
   if(err) {
     return console.error('error fetching client from pool', err);
   }
-      
+
   client.query("SELECT \"ADDR\" as address, \"CITY\" FROM cogs121_16_raw.sandag_clinics_all_prj", function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
-      
-//    console.log(result.rows[0].address, result.rows[0].CITY);
+
+    console.log(result.rows);
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
 
     res.json(result.rows);

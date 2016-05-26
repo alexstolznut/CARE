@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/map.css">
+    <link rel="stylesheet" href="/css/learnmore.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/statistics.js"></script>
+
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -11,8 +15,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!--Roboto Font-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -20,12 +22,12 @@
     <!--Lato Font-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
 
-  </head>
-  <body>
-<!--    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>-->
-<!--    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
-<!--    <script src="//d3js.org/topojson.v1.min.js"></script>-->
-<!--    <script src="https://d3js.org/queue.v1.min.js"></script>-->
+    <!--Monserrat Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="https://d3js.org/queue.v1.min.js"></script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-fixed-top" role="navigation">
@@ -50,6 +52,9 @@
                         <a href="/forums">Forums</a>
                     </li>
                     <li>
+                        <a href="/statistics">Statistics</a>
+                    </li>
+                    <li>
                         <a href="/learnmore">Learn More</a>
                     </li>
                     <li>
@@ -62,36 +67,22 @@
         <!-- /.container -->
     </nav>
 
-    <div id="explore">
 
-		<div id="map"></div>
-		<div id="filter">
-            <div id="header">Find a Clinic or Hospital Near You</div>
-                <br>
-                <br>
-                <br>
+    <div class="aboutGoal">
+        <div class="goaltitle"><center><h2>Our Goal</h2></center></div>
 
-                <form id="clinic-form">
-                    <fieldset class="form-group">
-                        <label id="loca" for="starting">Your Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="Type in Your Location" required>
-                        <br>
-                    </fieldset>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
 
-                    <center>
-                        <br>
-                        <input type="submit" class="btn-lg btn-submit" value="Find Clinics Around Me">
-                    </center>
-                </form>
-
-		</div>
-
+                <center><p> We at CARE wants to inform users about mental illness, in a way that will encourage them to ask questions. CARE welcomes all users, but tries to target those who currently are suffering from a mental illness and want support, people who just want to support those struggling with a mental illness, and even doctors if they wish to participate. CARE is a safe platform for anyone who has ever felt alone.
+                </p></center>
+            </div>
+        </div>
     </div>
-      
-    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>  
-    <script src="/js/publicmap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv460IEdNuuTaGtHUXOAPuTF8O5K7Xpx0&libraries=places&callback=initMap"
-        async defer></script>
 
-  </body>
+    <div class="graph"></div>
+
+
+
+</body>
 </html>

@@ -1,17 +1,26 @@
 body {
-    background-color: black;
+    background-color: white;
     margin: auto;
     padding-top: 50px;
     /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 /*---- Landing Page -----*/
-.navbar.navbar-inverse.navbar-fixed-top {
-    font-family: Roboto;
+.navbar.navbar-fixed-top {
+    font-family: Montserrat;
+    background-color: #F6F6F6;
+    border: none;
+}
+
+.nav.navbar-nav a:hover {
+    background-color: #E39090;
+    color: white;
+    text-shadow: none;
 }
 
 .navbar-brand {
     font-weight: 900;
+    font-family: Montserrat;
     font-size: 35px;
     float: left;
 
@@ -61,7 +70,7 @@ body {
     float:right;
     width:20%;
     height:100%;
-    background-color: #00091a;
+    background-color: #A62424;
     padding:10px;
 }
 

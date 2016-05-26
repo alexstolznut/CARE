@@ -2,6 +2,10 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/newthread.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -19,12 +23,18 @@
     }
     </style>
 
+    <!--Roboto Font-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!--Lato Font-->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -34,19 +44,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">C A R E</a>
+                <a class="navbar-brand" href="/">C A R E</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Explore Map</a>
+                        <a href="/map">Explore Map</a>
                     </li>
                     <li>
-                        <a href="#">Forums</a>
+                        <a href="/forums">Forums</a>
                     </li>
                     <li>
-                        <a href="#">Logout</a>
+                        <a href="/learnmore">Learn More</a>
+                    </li>
+                    <li>
+                        <a href="/">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -71,6 +84,7 @@
 				    Name (or anon): <input class="form-control" type="text" name="name"><br>
 				    Title:<textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
 				    Body:<textarea name="description" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
+                    <input type = "hidden" value = "0" name = "level">
 				    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
 				</fieldset>
 

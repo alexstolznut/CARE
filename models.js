@@ -4,7 +4,11 @@ var MessageSchema = mongoose.Schema({
 	name: 'String',
 	content: 'String',
 	created: 'Date',
-	description: 'String'
+	description: 'String',
+	level: 'Number',
+	parentId: 'String',
+	replies: [],
+	temp: []
 });
 
 exports.Message = mongoose.model('Message', MessageSchema);

@@ -2,6 +2,10 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/forums.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -10,21 +14,22 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <title></title>
 
-    <style>
-    body {
-        padding-top: 30px;
-        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    }
-    </style>
+    <!--Roboto Font-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!--Lato Font-->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
+
+    <!--Monserrat Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -34,16 +39,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">C A R E</a>
+                <a class="navbar-brand" href="/">C A R E</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Explore Map</a>
+                        <a href="/map">Explore Map</a>
                     </li>
                     <li>
-                        <a href="#">Forums</a>
+                        <a href="/forums">Forums</a>
+                    </li>
+                    <li>
+                        <a href="/learnmore">Learn More</a>
                     </li>
                     <li>
                         <a href="/">Logout</a>
@@ -59,32 +67,28 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
 
-                <div class="container">
+                <div id="forums" class="container">
                       <div class="page-header page-heading">
-                        <h1 class="pull-left">Forums</h1>
-                        <ol class="breadcrumb pull-right where-am-i">
-                          <li><a href="#">Forums</a></li>
-                          <li class="active">List of topics</li>
-                        </ol>
+                        <h1 class="pull-left">The Discussion Forums</h1>
+
                         <div class="clearfix"></div>
                       </div>
 
                       <p class="lead">
-                        Feel free to post any questions that you have about mental illness here.
-                        <a href="newthread">Click to start a New thread here</a>
+                        Feel free to post any questions or stories here. Click on a thread's title to see the discussion.
+                        <br><a href="newthread">Click to start a new thread here</a>
                       </p>
                       {{#if data}}
                       <table class="table forum table-striped">
                         <thead>
                           <tr>
                             <th class="cell-stat"></th>
-                            <th>
-                              <h3>Important</h3>
-                            </th>
-                            <th class="cell-stat text-center hidden-xs hidden-sm">Number of Comments</th>
-                            <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                            <th class="cell-stat-2x hidden-xs hidden-sm">Discussion Title:</th>
+
+                            <th class="cell-stat-2x hidden-xs hidden-sm">Created On:</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -92,9 +96,9 @@
                           <tr>
                             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
                             <td>
-                              <h4><a href="#">{{content}}</a><br><small>{{description}}</small></h4>
+                              <h4><a href="/thread?id={{_id}}">{{content}}</a><br><small>{{description}}</small></h4>
                             </td>
-                            <td class="text-center hidden-xs hidden-sm"><a href="#">Number of Comments Here</a></td>
+
                             <td class="hidden-xs hidden-sm">by <a href="#">{{name}}</a><br><small><i class="fa fa-clock-o"></i>{{created}}</small></td>
                           </tr>
                           {{/each}}

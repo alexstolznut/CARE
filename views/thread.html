@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/map.css">
+    <link rel="stylesheet" href="/css/thread.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -11,8 +13,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!--Roboto Font-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -20,12 +20,11 @@
     <!--Lato Font-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
 
-  </head>
-  <body>
-<!--    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>-->
-<!--    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
-<!--    <script src="//d3js.org/topojson.v1.min.js"></script>-->
-<!--    <script src="https://d3js.org/queue.v1.min.js"></script>-->
+    <!--Monserrat Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-fixed-top" role="navigation">
@@ -62,36 +61,42 @@
         <!-- /.container -->
     </nav>
 
-    <div id="explore">
+    <div class="row">
+        <div class="col-md-1"></div>
 
-		<div id="map"></div>
-		<div id="filter">
-            <div id="header">Find a Clinic or Hospital Near You</div>
-                <br>
-                <br>
-                <br>
-
-                <form id="clinic-form">
-                    <fieldset class="form-group">
-                        <label id="loca" for="starting">Your Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="Type in Your Location" required>
-                        <br>
-                    </fieldset>
-
-                    <center>
-                        <br>
-                        <input type="submit" class="btn-lg btn-submit" value="Find Clinics Around Me">
-                    </center>
-                </form>
-
-		</div>
+        <div class="col-md-8">
+            <div id = "display"></div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
 
     </div>
-      
-    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>  
-    <script src="/js/publicmap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv460IEdNuuTaGtHUXOAPuTF8O5K7Xpx0&libraries=places&callback=initMap"
-        async defer></script>
 
-  </body>
+
+
+
+    <script type="text/javascript">
+    	var show = false;
+    	function showReply(id){
+    		if(!show)
+    		{
+    			document.getElementById("name"+id).style.display="block";
+    			document.getElementById("description"+id).style.display="block";
+    			document.getElementById("submit"+id).style.display="inline";
+                document.getElementById("cancel"+id).style.display="inline";
+    			show = true;
+    		}
+    		else
+    		{
+    			document.getElementById("name"+id).style.display="none";
+    			document.getElementById("description"+id).style.display="none";
+    			document.getElementById("submit"+id).style.display="none";
+                document.getElementById("cancel"+id).style.display="none";
+    			show = false;
+    		}
+    	}
+    </script>
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+<script src="/js/forums.js"></script>
+</body>
 </html>
