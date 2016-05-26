@@ -148,9 +148,13 @@ app.get("/", function(req, res) {
 });
 
 app.get('/delphidata', function(req,res){
+<<<<<<< HEAD
+        
+=======
 
     console.log("DATABASE");
 
+>>>>>>> a34435f6999f41f52e87d177922d73b1f633cae3
   var conString = process.env.DATABASE_CONNECTION_URL;
 
 //  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
