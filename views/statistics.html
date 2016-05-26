@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="/css/learnmore.css">
     <script type="text/javascript" src="/js/jquery.js"></script>
-    <script type="text/javascript" src="/js/statistics.js"></script>
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -24,11 +23,24 @@
 
     <!--Monserrat Font -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<style>
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
+
 </head>
 <body>
         <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="https://d3js.org/queue.v1.min.js"></script>
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <!-- Navigation -->
     <nav class="navbar navbar-fixed-top" role="navigation">
         <div class="container">
@@ -68,19 +80,12 @@
     </nav>
 
 
-    <div class="aboutGoal">
-        <div class="goaltitle"><center><h2>Our Goal</h2></center></div>
+    <script type="text/javascript" src="/js/statistics.js"></script>
 
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+    <br>
+    <div class="chart"></div>
 
-                <center><p> We at CARE wants to inform users about mental illness, in a way that will encourage them to ask questions. CARE welcomes all users, but tries to target those who currently are suffering from a mental illness and want support, people who just want to support those struggling with a mental illness, and even doctors if they wish to participate. CARE is a safe platform for anyone who has ever felt alone.
-                </p></center>
-            </div>
-        </div>
-    </div>
 
-    <div class="graph"></div>
 
 
 

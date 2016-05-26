@@ -1,33 +1,37 @@
 
 var total = 0;
 
-(function(d3) {
 
-  "use strict";
-    $.getJSON("/vamentalhealth.json", function (data) {
+"use strict";
+$.getJSON("/vamentalhealth.json", function (data) {
 
-        // Iterate the groups first.
-        $.each(data, function (index, value) {
+    // Iterate the groups first.
+    $.each(data, function (index, value) {
 
-            // Get all the categories
-            var items = this.Item;
-            if (items == "Unique Veterans Seen In Inpatient Mental Health") {
-                var value = this.Value;
-                total = parseInt(value) + total;
-            }
+        // Get all the categories
+        var items = this.Item;
+        if (items == "Unique Veterans Seen In Inpatient Mental Health") {
+            var value = this.Value;
+            total = parseInt(value) + total;
+        }
 
-        });
-        renderChart(data);
     });
-
-    function renderChart(total) {
-        var body = d3.select("graph");
-        console.log(total);
-        var div = document.createElement("div");
-        div.html("Hello, world!");
-    }
-
-
-
-
+    renderChart(total);
 });
+
+function renderChart(total) {
+    var data=[total];
+
+    var x = d3.scale.linear()
+        .domain([0, d3.max(data)])
+        .range([0, 420]);
+
+    d3.select(".chart")
+      .selectAll("div")
+        .data(data)
+      .enter().append("div")
+        .style("width", function(d) { return x(d) + "px"; })
+        .text(function(d) { return d; });
+}
+
+
