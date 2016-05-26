@@ -148,13 +148,7 @@ app.get("/", function(req, res) {
 });
 
 app.get('/delphidata', function(req,res){
-<<<<<<< HEAD
-        
-=======
 
-    console.log("DATABASE");
-
->>>>>>> a34435f6999f41f52e87d177922d73b1f633cae3
   var conString = process.env.DATABASE_CONNECTION_URL;
 
 //  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
@@ -169,7 +163,7 @@ app.get('/delphidata', function(req,res){
       return console.error('error running query', err);
     }
 
-    console.log(result.rows);
+//    console.log(result.rows);
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
 
     res.json(result.rows);

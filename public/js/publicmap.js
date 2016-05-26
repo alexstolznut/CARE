@@ -35,6 +35,9 @@ function initMap() {
               //alert(results[0].geometry.location);
               map.setCenter(results[0].geometry.location);
               createMarker(results[0].geometry.location,location[0]+"<br>"+location[1]);
+            } 
+            else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
+                console.log("over query limit")
             }
             else
             {
