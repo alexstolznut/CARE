@@ -3,6 +3,7 @@ const http = require("http");
 const path = require("path");
 var dotenv = require('dotenv');
 var pg = require('pg');
+var fs = require("fs");
 var jsonfile = require('jsonfile');
 
 var passport = require('passport');
@@ -149,6 +150,8 @@ app.get("/", function(req, res) {
 
 app.get('/delphidata', function(req,res){
 
+  console.log(req.body.search);
+    
   var conString = process.env.DATABASE_CONNECTION_URL;
 
 //  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
@@ -165,7 +168,9 @@ app.get('/delphidata', function(req,res){
 
 //    console.log(result.rows);
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
-
+    jsonfile.writeFile('data.json', result.rows, function(err) {
+        console.log(err);
+    });  
     res.json(result.rows);
     client.end();
   });

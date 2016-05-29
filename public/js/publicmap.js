@@ -1,5 +1,5 @@
 function initMap() {
-  var map;
+
     $.get("/delphidata", function(data) {
 
         var locations = [];
