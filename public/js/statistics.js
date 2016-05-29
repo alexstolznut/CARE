@@ -1,9 +1,11 @@
 
 var total = 0;
 var total2 = 0;
+var total3 = 0;
 var itemCount = 0;
 var uniquevets;
 var propo;
+var service;
 
 "use strict";
 $.getJSON("/vamentalhealth.json", function (data) {
@@ -15,11 +17,11 @@ $.getJSON("/vamentalhealth.json", function (data) {
         var items = this.Item;
         // console.log(items);
         if (items == "Unique Veterans Seen In Inpatient Mental Health") {
-            var value = this.Value;
-            total = parseInt(value) + total;
+            var v = this.Value;
+            total = parseInt(v) + total;
             uniquevets = items;
         }
-        if(items === "Proportion of Veterans with Possible Mental Illness Seen in Any Mental Health"){
+        if(items == "Proportion of Veterans with Possible Mental Illness Seen in Any Mental Health"){
             propo = items;
             var val = this.Value;
             var number = "";
@@ -27,24 +29,37 @@ $.getJSON("/vamentalhealth.json", function (data) {
             for (var i = 0, len = val.length; i < len-1; i++) {
               number=number+val[i];
             }
-            console.log(number);
+            // console.log(number);
 
             total2 = parseInt(number) + total2;
             itemCount++;
         }
+        if(items =="Number of Service Users with Possible Mental Illness"){
+            service = items;
+            var values = this.Value;
+            var num = "";
+
+            for (var i = 0, len = values.length; i < len; i++) {
+              if (values[i] != ",") {
+                num=num+values[i];
+              }
+            }
+
+            total3 = parseInt(num) + total3;
+        }
 
     });
-    console.log(total2/itemCount);
-    names = [uniquevets,propo];
+    console.log(total3);
+    names = [uniquevets,propo,service];
     pieChart([total2/itemCount, 100-total2/itemCount], names);
-    barChart(total);
+    barChart([total,total3], names);
 });
 
 function pieChart(totals, names) {
     var data=totals;
 
-    var width = 960,
-        height = 500,
+    var width = 760,
+        height = 300,
         radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
@@ -86,10 +101,10 @@ function pieChart(totals, names) {
 }
 
 
-function barChart(totals) {
-    var data=[totals];
+function barChart(totals, names) {
+    var data=totals;
 
-
+    // need to work on the bar chart
     var x = d3.scale.linear()
         .domain([0, d3.max(data)])
         .range([0, 420]);
