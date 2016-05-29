@@ -1,9 +1,5 @@
 function initMap() {
-<<<<<<< HEAD
- 
-=======
-  var map;
->>>>>>> fcbd2a3af94ac21e376cfe8a1681ef5c03d8fb98
+
     $.get("/delphidata", function(data) {
 
         var locations = [];
