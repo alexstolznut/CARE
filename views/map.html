@@ -62,7 +62,7 @@
         <!-- /.container -->
     </nav>
 
-    <div id="explore">
+    <div id="explore" style="height: 93vh;">
 
 		<div id="map"></div>
 		<div id="filter">
@@ -71,10 +71,10 @@
                 <br>
                 <br>
 
-                <form id="clinic-form">
+                <form id="clinic-form" method="get" action="/map">
                     <fieldset class="form-group">
                         <label id="loca" for="starting">Your Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="Type in Your Location" required>
+                        <input name="location" type="text" class="form-control" id="location" placeholder="Type in Your Location" required>
                         <br>
                     </fieldset>
 

@@ -28,6 +28,7 @@
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.13.0",
+    "fs": "0.0.2",
     "googlemaps": "^1.6.0",
     "handlebars": "^4.0.5",
     "jsonfile": "^2.3.1",
