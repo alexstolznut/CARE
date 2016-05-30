@@ -22,8 +22,7 @@ $.getJSON("/vamentalhealth.json", function (data) {
 
         // Get all the categories
         var items = this.Item;
-        // console.log(items);
-        // console.log(items);
+
         if (items == "Unique Veterans Seen In Inpatient Mental Health") {
             var v = this.Value;
             total = parseInt(v) + total;
@@ -37,7 +36,6 @@ $.getJSON("/vamentalhealth.json", function (data) {
             for (var i = 0, len = val.length; i < len-1; i++) {
               number=number+val[i];
             }
-            // console.log(number);
 
             total2 = parseInt(number) + total2;
             itemCount++;
@@ -71,7 +69,6 @@ $.getJSON("/vamentalhealth.json", function (data) {
             for (var i = 0, len = val.length; i < len-1; i++) {
               number=number+val[i];
             }
-            console.log(number);
             total5 = parseInt(number) + total5;
             itemCount3++;
 
@@ -82,16 +79,11 @@ $.getJSON("/vamentalhealth.json", function (data) {
             for (var i = 0, len = val.length; i < len-1; i++) {
               number=number+val[i];
             }
-            console.log(number);
             total6 = parseInt(number) + total6;
             itemCount4++;
 
         }
-
-        // Proportion of Non-Mental Health Services Rendered to VHA Users with a Confirmed Mental Illness - Community Living Center Stays
-
     });
-    console.log(total5);
     names = [uniquevets,propo,service];
     pieChart([total2/itemCount, 100-total2/itemCount], names);
     barChart([total,total3], names);
@@ -99,6 +91,22 @@ $.getJSON("/vamentalhealth.json", function (data) {
     pieChart3([total5/itemCount3, 100-total5/itemCount3]);
     pieChart3([total6/itemCount4, 100-total6/itemCount4]);
 
+});
+
+$.getJSON("/veteranenrollees.json", function (data) {
+
+    var databycounty=data.DataByCounty;
+    // Iterate the groups first.
+    $.each(databycounty, function (index, value) {
+
+        // Get all the categories
+        var StateAbbrev = this.StateAbbrev;
+
+        if (StateAbbrev == "CA") {
+            var county = this.CountyName;
+            console.log(county);
+        }
+    });
 });
 
 function pieChart(totals, names) {
