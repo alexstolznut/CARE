@@ -89,7 +89,7 @@ $.getJSON("/vamentalhealth.json", function (data) {
     barChart([total,total3], names);
     pieChart2([total4/itemCount2, 100-total4/itemCount2]);
     pieChart3([total5/itemCount3, 100-total5/itemCount3]);
-    pieChart3([total6/itemCount4, 100-total6/itemCount4]);
+    pieChart4([total6/itemCount4, 100-total6/itemCount4]);
 
 });
 
@@ -238,7 +238,7 @@ function pieChart3(totals) {
           .text(function(d) { return d.data; });
 }
 
-function pieChart3(totals) {
+function pieChart4(totals) {
     var data=totals;
 
     var width = 760,
