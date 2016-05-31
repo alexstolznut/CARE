@@ -1,10 +1,11 @@
+
 function initMap() {
-
+    
     $.get("/delphidata", function(data) {
-
+        
         var locations = [];
         var pair = [];
-
+               
         for (var i = 0; i < data.length; i++) {
             pair[1] = data[i].CITY;
             pair[2] = data[i].address + ", " + data[i].CITY;
@@ -107,14 +108,19 @@ function initMap() {
 
               }
           });
+          
           console.log(stationvalues);
           // circles(stationvalues);
 
       });
     }
-
-
-
+    
+//    $('#clinic-form').submit(function(e) {
+//        e.preventDefault();
+//        starting = $('#location').val();
+//        console.log(starting);
+//        // window.location.href = '/map?starting=' + starting;
+//    });
 }
 
 
