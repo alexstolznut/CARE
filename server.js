@@ -168,9 +168,9 @@ app.get('/delphidata', function(req,res){
 
 //    console.log(result.rows);
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
-    jsonfile.writeFile('data.json', result.rows, function(err) {
-        console.log(err);
-    });
+//    jsonfile.writeFile('data.json', result.rows, function(err) {
+//        console.log(err);
+//    });
     res.json(result.rows);
     client.end();
   });
@@ -178,6 +178,37 @@ app.get('/delphidata', function(req,res){
 
   return { delphidata: "No data present." }
 });
+
+app.post('/map1', function(req, res) {
+    
+    console.log("search: " + req.body.location);
+    var conString = process.env.DATABASE_CONNECTION_URL;
+
+//  var query = "SELECT 'ADDR' as address FROM cogs121_16_raw.sandag_clinics_all_prj";
+  pg.connect(conString, function(err, client, done) {
+
+  if(err) {
+    return console.error('error fetching client from pool', err);
+  }
+
+  client.query("SELECT \"ADDR\" as address, \"CITY\", \"ZIP_CODE\" FROM cogs121_16_raw.sandag_clinics_all_prj", function(err, result) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+
+//    console.log(result.rows);
+    //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
+//    jsonfile.writeFile('data.json', result.rows, function(err) {
+//        console.log(err);
+//    });
+    res.json(result.rows);
+    client.end();
+  });
+  });
+
+  return { delphidata: "No data present." }
+});
+
 
 /* Passport serialization here */
 passport.serializeUser(function(user, done) {

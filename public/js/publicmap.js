@@ -1,3 +1,5 @@
+var county = [];
+var gmarkers = [];
 
 function initMap() {
 
@@ -7,6 +9,19 @@ function initMap() {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
+    var c = [];
+    
+    
+    $.getJSON("/county.json", function (data) {
+        
+        var i = 0;
+        
+        $.each(data, function (index, value) {
+//            console.log(data[i].state + "  " + data[i].county + " county");
+            i++;            
+        });
+    });
+    
     var county = [];
     var enrollees = [];
     var counties = [];
@@ -14,27 +29,27 @@ function initMap() {
 
     $.getJSON("/veteranenrollees.json", function (data) {
 
-        var databycounty=data.DataByCounty;
+        var databycounty = data.DataByCounty;
+//        console.log(databycounty);
         // Iterate the groups first.
         $.each(databycounty, function (index, value) {
 
-            // Get all the categories
-            var StateAbbrev = this.StateAbbrev;
-
-            if (StateAbbrev == "CA") {
-                county[0] = "CA";
-                county[1] = this.CountyName;
-                counties[i] = this.CountyName;
-                enrollees[i] = this.VeteranEnrollees;
-                i++;
-            }
+//            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
+//            // Get all the categories
+//            var StateAbbrev = databycounty[i].StateAbbrev;
+//            
+//            counties[i] = databycounty[i].CountyName;
+//            enrollees[i] = databycounty[i].VeteranEnrollees;
+            i++;   
+            
+            
         });
-
-
+        
+        
     });
 
     $.get("/delphidata", function(data) {
-        
+
         var locations = [];
         var pair = [];
                
@@ -45,17 +60,24 @@ function initMap() {
             locations[i] = [pair[1], pair[2]];
         }
 
-        var infowindow = new google.maps.InfoWindow();
-        var geocoder = new google.maps.Geocoder();
+//        var infowindow = new google.maps.InfoWindow();
+//        var geocoder = new google.maps.Geocoder();
 
-        var marker, i;
+        var i;
 
         for (i = 0; i < locations.length; i++) {
           geocodeAddress(locations[i]);
         }
 
-        function geocodeAddress(location) {
-          geocoder.geocode( { 'address': location[1]}, function(results, status) {
+    });
+    
+/////////// renders map    
+    var infowindow = new google.maps.InfoWindow();
+    var geocoder = new google.maps.Geocoder();
+    
+    function geocodeAddress(location) {
+
+        geocoder.geocode( { 'address': location[1]}, function(results, status) {
           //alert(status);
             if (status == google.maps.GeocoderStatus.OK) {
 
@@ -72,12 +94,15 @@ function initMap() {
             }
           });
         }
-
-        function createMarker(latlng,html){
+    
+/////////// creat markers 
+    function createMarker(latlng,html){
           var marker = new google.maps.Marker({
             position: latlng,
             map: map
           });
+        
+          gmarkers.push(marker);
 
           google.maps.event.addListener(marker, 'mouseover', function() {
             infowindow.setContent(html);
@@ -87,15 +112,21 @@ function initMap() {
           google.maps.event.addListener(marker, 'mouseout', function() {
             infowindow.close();
           });
-        }
+    }
+    
+// Removes the markers from the map, but keeps them in the array.
+function removeMarkers(){
+    for(i=0; i<gmarkers.length; i++){
+        gmarkers[i].setMap(null);
+    }
+}
 
-    });
-
-    var autocomplete = new google.maps.places.Autocomplete(
-    /** @type {!HTMLInputElement} */
-    (document.getElementById('location')), {
-        types: ['geocode']
-    });
+/////////// autocomplete search box 
+//    var autocomplete = new google.maps.places.Autocomplete(
+//    /** @type {!HTMLInputElement} */
+//    (document.getElementById('location')), {
+//        types: ['geocode']
+//    });
 
     // load clinic data
     $.getJSON("/facilities.json", function (data) {
@@ -141,12 +172,53 @@ function initMap() {
       });
     }
     
-//    $('#clinic-form').submit(function(e) {
-//        e.preventDefault();
-//        starting = $('#location').val();
-//        console.log(starting);
-//        // window.location.href = '/map?starting=' + starting;
-//    });
+    $('#clinic-form').submit(function(e) {
+    
+        removeMarkers();
+        
+        e.preventDefault();
+        starting = $('#location').val();
+//        console.log("search for: " + starting);
+        $.post( "/map1", function( data ) {
+
+            var locations = [];
+            var pair = [];
+            var str1;
+            var str2 = starting;
+            var j = 0;
+            
+            for (var i = 0; i < data.length; i++) {
+                
+                str1 = data[i].ZIP_CODE;
+
+                if ((str1.localeCompare(str2)) == 0) {
+                    
+                    console.log("inside: " + str1);
+                    pair[1] = data[i].CITY;
+                    pair[2] = data[i].address + ", " + data[i].CITY;
+                    locations[j] = [pair[1], pair[2]];
+                    j++;                 
+                }
+            } 
+            
+            if(locations.length == 0) {
+                alert("No clinics in your area. Please consider the ones listed or Enter a nearby zipcode.");
+                
+                for (var i = 0; i < data.length; i++) {
+                    pair[1] = data[i].CITY;
+                    pair[2] = data[i].address + ", " + data[i].CITY;
+
+                    locations[i] = [pair[1], pair[2]];
+                }
+            }
+                        
+            var i;
+
+            for (i = 0; i < locations.length; i++) {
+              geocodeAddress(locations[i]);
+            }
+        });
+    });
 }
 
 
