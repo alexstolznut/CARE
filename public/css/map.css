@@ -30,20 +30,38 @@ body {
     font-family: Montserrat;
     background-color: #F6F6F6;
     border: none;
+    box-shadow:1px 2px 4px rgba(0, 0, 0, .5);
+    height: 10%;
 }
 
 .nav.navbar-nav a:hover {
-    background-color: #E39090;
-    color: white;
+    background-color: #F6F6F6;
+    color: #97D4C6;
     text-shadow: none;
 }
 
-.navbar-brand {
+.navbar-branding {
     font-weight: 900;
     font-family: Montserrat;
-    font-size: 35px;
+    font-size:35px;
     float: left;
+    width:100%;
+    margin-left:15%;
+    color:#21a1ea;
 
+
+}
+
+.side-menu{
+  font-weight: 900;
+  font-family: Montserrat;
+  font-size: 25px;
+  float: left;
+  color:#21a1ea;
+}
+
+#bs-example-navbar-collapse-1{
+  margin-right:5%;
 }
 
 #map {
@@ -66,8 +84,8 @@ body {
 
 #header {
     font-family: Roboto;
-    font-weight: 700;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 30px;
     color: white;
     text-align: center;
     padding-top: 80px;
@@ -77,20 +95,24 @@ body {
     font-family: Roboto;
     font-weight: 300;
     font-size: 12px;
+    width: 19vw;
+    height: 5vh;
+
 }
 
 #loca {
     color: white;
     font-family: Roboto;
-    font-weight: 100;
-    font-size: 20px;
+    font-weight: 300;
+    font-size: 24px;
 }
 
 #filter{
     float:right;
     width:20%;
     height:100%;
-    background-color: #A62424;
+    /*background-color: #97D4C6;*/
+    background-color:#4db5f1;
     padding:10px;
 }
 
@@ -119,10 +141,16 @@ body {
     font-weight: 100;
 }
 
-.bnt {
+.btn-lg {
     text-align: center;
-}
+    height: 5vh;
+    width:19vw;
+    font-size: 100px;
 
+}
+.btn-primary{
+  font-size:24px;
+}
 .bnt0 {
     width: 10%;
     padding: 10px;

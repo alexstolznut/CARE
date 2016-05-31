@@ -1,6 +1,38 @@
 
 function initMap() {
-    
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(32.715738,-117.1610838),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var county = [];
+    var enrollees = [];
+    var counties = [];
+    var i = 0;
+
+    $.getJSON("/veteranenrollees.json", function (data) {
+
+        var databycounty=data.DataByCounty;
+        // Iterate the groups first.
+        $.each(databycounty, function (index, value) {
+
+            // Get all the categories
+            var StateAbbrev = this.StateAbbrev;
+
+            if (StateAbbrev == "CA") {
+                county[0] = "CA";
+                county[1] = this.CountyName;
+                counties[i] = this.CountyName;
+                enrollees[i] = this.VeteranEnrollees;
+                i++;
+            }
+        });
+
+
+    });
+
     $.get("/delphidata", function(data) {
         
         var locations = [];
@@ -12,12 +44,6 @@ function initMap() {
 
             locations[i] = [pair[1], pair[2]];
         }
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: new google.maps.LatLng(32.715738,-117.1610838),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
 
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder();
@@ -142,3 +168,4 @@ function initMap() {
 //    var starting = $('#location').val();
 //    // window.location.href = '/map?starting=' + starting;
 //});
+

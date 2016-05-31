@@ -1,7 +1,6 @@
 body {
     background-color: white;
     margin: auto;
-    padding-top: 50px;
     /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
@@ -273,7 +272,7 @@ body {
     font-weight: 700;
 }
 .aboutGoal {
-    background-color: #D97F7F;
+    background-color: #4db5f1;
     padding: 50px;
     color: white;
 }
@@ -299,26 +298,3 @@ p {
 .aboutTeam img {
     border: 7px #EDEDED;
 }
-
-/*#teamInfo {
-    width: 100%;
-    height: 42.5vh;
-}
-
-.aboutGoal {
-    width: 49%;
-    height: 100%;
-    float: left;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    text-align: center;
-}
-
-.infoContent {
-    margin-top: 5vh;
-    width: 70%;
-    color: white;
-    font-family: sans-serif;
-    font-weight: 100;
-}
-*/

@@ -1,5 +1,5 @@
-2016-05-30T11:32:41.104-0700 E NETWORK  [initandlisten] listen(): bind() failed errno:48 Address already in use for socket: 0.0.0.0:27017
-2016-05-30T11:32:41.136-0700 E NETWORK  [initandlisten]   addr already in use
-2016-05-30T11:32:41.172-0700 W -        [initandlisten] Detected unclean shutdown - dbpath/mongod.lock is not empty.
-2016-05-30T11:32:41.533-0700 I STORAGE  [initandlisten] exception in initAndListen: 98 Unable to lock file: dbpath/mongod.lock errno:35 Resource temporarily unavailable. Is a mongod instance already running?, terminating
-2016-05-30T11:32:41.546-0700 I CONTROL  [initandlisten] dbexit:  rc: 100
+2016-05-30T20:42:49.705-0700 E NETWORK  [initandlisten] listen(): bind() failed errno:48 Address already in use for socket: 0.0.0.0:27017
+2016-05-30T20:42:49.705-0700 E NETWORK  [initandlisten]   addr already in use
+2016-05-30T20:42:49.713-0700 W -        [initandlisten] Detected unclean shutdown - dbpath/mongod.lock is not empty.
+2016-05-30T20:42:49.843-0700 I STORAGE  [initandlisten] exception in initAndListen: 98 Unable to lock file: dbpath/mongod.lock errno:35 Resource temporarily unavailable. Is a mongod instance already running?, terminating
+2016-05-30T20:42:49.890-0700 I CONTROL  [initandlisten] dbexit:  rc: 100
