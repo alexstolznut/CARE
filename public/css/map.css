@@ -35,8 +35,8 @@ body {
 }
 
 .nav.navbar-nav a:hover {
-    background-color: #E39090;
-    color: white;
+    background-color: #F6F6F6;
+    color: #97D4C6;
     text-shadow: none;
 }
 
