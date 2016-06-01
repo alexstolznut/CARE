@@ -96,7 +96,7 @@ function initMap() {
           }
         }
       }
-      console.log(addToPercent);
+      console.log(addToPercent); // addToPercent[0] is the address, addToPercent[1] is the percentage of veterans in that address with PTSD
       // makecircles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
 
