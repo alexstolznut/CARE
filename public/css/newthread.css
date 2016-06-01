@@ -30,6 +30,11 @@ body {
     color:#21a1ea;
 }
 
+.container{
+    font-family: Montserrat;
+}
+
+
 #map {
     width: 80%;
     height: 100%;
