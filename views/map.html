@@ -69,30 +69,25 @@
     </nav>
 
     <div id="explore" style="height: 93vh;">
+        <div id="map"></div>
 
-		<div id="map"></div>
-		<div id="filter">
-      <div class="fluid-container">
-            <div id="header">Find a Clinic or Hospital Near You</div>
+        <div id="filter">
+            <div id="header">Find a Clinic Near You</div>
                 <br>
                 <br>
                 <br>
 
                 <form id="clinic-form" method="post" action="/map">
-                    <fieldset class="form-group">
-                        <label id="loca" for="starting">Your Location</label>
-                        <input name="location" type="text" class="form-control" id="location" placeholder="Type in Your Zipcode" required>
+                    <center><fieldset class="form-group">
+                        <label id="loca" for="location">Search by Location:</label>
+                        <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
                         <br>
-                    </fieldset>
-
-                    <center>
-                        <br>
-                        <input type="submit" class="btn btn-lg btn-primary" value="Find Clinics Around Me" syle="font-size: 24px;">
-                    </center>
+                    </fieldset></center>
+                    <br>
+                    <input type="submit" class="btn btn-lg btn-default" value="Find Clinics Around Me">
                 </form>
               </div>
-
-		</div>
+        </div>
 
     </div>
     <script src="//d3js.org/d3.v3.min.js"></script>
