@@ -85,9 +85,9 @@ $.getJSON("/vamentalhealth.json", function (data) {
         }
     });
     names = [uniquevets,propo,service];
-    barChart([total,total3], names);
     var totalname = (total2/itemCount).toString();
     var totalnamenew = "";
+
 
     for (var i=0; i<totalname.length; i++){
       if (totalname[i]=="."){
@@ -95,116 +95,60 @@ $.getJSON("/vamentalhealth.json", function (data) {
       }
       totalnamenew = totalnamenew + totalname[i];
     }
-
-    // pieChart([total2/itemCount, 100-total2/itemCount], names);
     donutChart({t: [total2/itemCount, 100-total2/itemCount]}, totalnamenew);
-    pieChart2([total4/itemCount2, 100-total4/itemCount2]);
-    pieChart3([total5/itemCount3, 100-total5/itemCount3]);
-    pieChart4([total6/itemCount4, 100-total6/itemCount4]);
 
+    totalnamenew = "";
+    var totalname = (total4/itemCount2).toString();
+
+    for (var i=0; i<totalname.length; i++){
+      if (totalname[i]=="."){
+        break;
+      }
+      totalnamenew = totalnamenew + totalname[i];
+    }
+    donutChart2({t: [total4/itemCount2, 100-total4/itemCount2]}, totalnamenew);
+
+
+    totalnamenew = "";
+    var totalname = (total5/itemCount3).toString();
+
+    for (var i=0; i<totalname.length; i++){
+      if (totalname[i]=="."){
+        break;
+      }
+      totalnamenew = totalnamenew + totalname[i];
+    }
+    donutChart3({t: [total5/itemCount3, 100-total5/itemCount3]}, totalnamenew);
+
+
+    totalnamenew = "";
+    var totalname = (total6/itemCount4).toString();
+
+    for (var i=0; i<totalname.length; i++){
+      if (totalname[i]=="."){
+        break;
+      }
+      totalnamenew = totalnamenew + totalname[i];
+    }
+    donutChart4({t: [total6/itemCount4, 100-total6/itemCount4]}, totalnamenew);
 });
 
-$.getJSON("/veteranenrollees.json", function (data) {
+// $.getJSON("/veteranenrollees.json", function (data) {
 
-    var databycounty=data.DataByCounty;
-    // Iterate the groups first.
-    $.each(databycounty, function (index, value) {
+//     var databycounty=data.DataByCounty;
+//     // Iterate the groups first.
+//     $.each(databycounty, function (index, value) {
 
-        // Get all the categories
-        var StateAbbrev = this.StateAbbrev;
+//         // Get all the categories
+//         var StateAbbrev = this.StateAbbrev;
 
-        if (StateAbbrev == "CA") {
-            var county = this.CountyName;
-            console.log(county);
-        }
-    });
-});
+//         if (StateAbbrev == "CA") {
+//             var county = this.CountyName;
+//             console.log(county);
+//         }
+//     });
+// });
 
-function pieChart(totals, names) {
-    var data=totals;
-
-    var width = 200,
-        height = 200,
-        radius = Math.min(width, height) / 2;
-
-    var color = d3.scale.ordinal()
-        .range(["#98abc5", "#8a89a6"]);
-
-    var arc = d3.svg.arc()
-        .outerRadius(radius - 10)
-        .innerRadius(0);
-
-    var labelArc = d3.svg.arc()
-        .outerRadius(radius - 40)
-        .innerRadius(radius - 40);
-
-    var pie = d3.layout.pie()
-        .sort(null)
-        .value(function(d) { return d; });
-
-    var svg = d3.select(".pie").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-      var g = svg.selectAll(".arc")
-          .data(pie(data))
-        .enter().append("g")
-          .attr("class", "arc");
-
-      g.append("path")
-          .attr("d", arc)
-          .style("fill", function(d) { return color(d.data); });
-
-      g.append("text")
-          .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-          .attr("dy", ".35em")
-          .text(function(d) { return d.data; });
-}
-
-function pieChart2(totals) {
-    var data=totals;
-
-    var width = 200,
-        height = 200,
-        radius = Math.min(width, height) / 2;
-
-    var color = d3.scale.ordinal()
-        .range(["#98abc5", "#8a89a6"]);
-
-    var arc = d3.svg.arc()
-        .outerRadius(radius - 10)
-        .innerRadius(0);
-
-    var labelArc = d3.svg.arc()
-        .outerRadius(radius - 40)
-        .innerRadius(radius - 40);
-
-    var pie = d3.layout.pie()
-        .sort(null)
-        .value(function(d) { return d; });
-
-    var svg = d3.select(".pie2").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-      var g = svg.selectAll(".arc")
-          .data(pie(data))
-        .enter().append("g")
-          .attr("class", "arc");
-
-      g.append("path")
-          .attr("d", arc)
-          .style("fill", function(d) { return color(d.data); });
-
-      g.append("text")
-          .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-          .attr("dy", ".35em")
-          .text(function(d) { return d.data; });
-}
 
 function pieChart3(totals) {
     var data=totals;
@@ -293,12 +237,12 @@ function pieChart4(totals) {
 }
 
 function donutChart(totals, percent) {
-    var width = 460,
+    var width = 350,
     height = 300,
     radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    .range(["#F5FF54", "#FDFFDD", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
     var pie = d3.layout.pie()
     .sort(null);
@@ -323,22 +267,108 @@ function donutChart(totals, percent) {
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
       .attr("class", "inside")
-      .text(function(d) { return percent; });
+      .text(function(d) { return percent+"%"; });
 
 }
 
-function barChart(totals, names) {
-    var data=totals;
+function donutChart2(totals, percent) {
+    var width = 350,
+    height = 300,
+    radius = Math.min(width, height) / 2;
 
-    // need to work on the bar chart
-    var x = d3.scale.linear()
-        .domain([0, d3.max(data)])
-        .range([0, 420]);
+    var color = d3.scale.ordinal()
+    .range(["#F5FF54", "#FDFFDD", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-    d3.select(".chart")
-      .selectAll("div")
-        .data(data)
-      .enter().append("div")
-        .style("width", function(d) { return x(d) + "px"; })
-        .text(function(d) { return d; });
+    var pie = d3.layout.pie()
+    .sort(null);
+
+    var arc = d3.svg.arc()
+    .innerRadius(radius - 100)
+    .outerRadius(radius - 70);
+
+    var svg = d3.select(".pie2").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var path = svg.selectAll("path")
+    .data(pie(totals.t))
+      .enter().append("path")
+     .attr("class", "arc")
+    .attr("fill", function(d, i) { return color(i); })
+    .attr("d", arc);
+    svg.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .attr("class", "inside")
+      .text(function(d) { return percent+"%"; });
+}
+
+function donutChart3(totals, percent) {
+    var width = 350,
+    height = 300,
+    radius = Math.min(width, height) / 2;
+
+    var color = d3.scale.ordinal()
+    .range(["#F5FF54", "#FDFFDD", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+    var pie = d3.layout.pie()
+    .sort(null);
+
+    var arc = d3.svg.arc()
+    .innerRadius(radius - 100)
+    .outerRadius(radius - 70);
+
+    var svg = d3.select(".pie3").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var path = svg.selectAll("path")
+    .data(pie(totals.t))
+      .enter().append("path")
+     .attr("class", "arc")
+    .attr("fill", function(d, i) { return color(i); })
+    .attr("d", arc);
+    svg.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .attr("class", "inside")
+      .text(function(d) { return percent+"%"; });
+}
+
+function donutChart4(totals, percent) {
+    var width = 350,
+    height = 300,
+    radius = Math.min(width, height) / 2;
+
+    var color = d3.scale.ordinal()
+    .range(["#F5FF54", "#FDFFDD", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+    var pie = d3.layout.pie()
+    .sort(null);
+
+    var arc = d3.svg.arc()
+    .innerRadius(radius - 100)
+    .outerRadius(radius - 70);
+
+    var svg = d3.select(".pie4").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var path = svg.selectAll("path")
+    .data(pie(totals.t))
+      .enter().append("path")
+     .attr("class", "arc")
+    .attr("fill", function(d, i) { return color(i); })
+    .attr("d", arc);
+    svg.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .attr("class", "inside")
+      .text(function(d) { return percent+"%"; });
 }
