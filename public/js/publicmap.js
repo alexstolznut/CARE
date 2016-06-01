@@ -44,9 +44,62 @@ function initMap() {
 
 
         });
-
-
     });
+
+    var percent = [];
+    var station = [];
+    var facility = [];
+    var addresses = [];
+    $.getJSON("/facilities.json", function (data) {
+
+        // Iterate the groups first.
+        var eachdata = data.VAFacilityData;
+        $.each(eachdata, function (index, value) {
+          facility[index] = value.facility_id;
+          addresses[index] = value.address + "," + value.city;
+        }); // end of second each
+    getPTSD(facility, addresses);
+
+    }); // end of second getjson
+
+
+    function getPTSD(fac, addr){
+      // var percentToStation = [];
+      var index = 0;
+
+      $.getJSON("/ptsd.json", function (data) {
+          // Iterate the groups first.
+          var ind = 0;
+          $.each(data, function (index, value) {
+            if (value.Category == "Station-Level Stats" && value.Item == "% of Veterans served with PTSD") {
+              var loc = value.Location;
+              percent[ind] = value.Value;
+              station[ind] = loc;
+              ind++;
+            } // of of if
+          }); // end of each
+
+          comparePTSD(fac,addr,percent,station);
+
+      }); // end of first get json
+      // return percentToStation;
+    }
+
+    function comparePTSD(fac,addr,per,stat) {
+      var addToPercent = [];
+      var index = 0;
+      for (var i = 0; i<per.length; i++){
+        for (var j=0; j<addr.length; j++){
+          if (stat[i] == fac[j]) {
+            addToPercent[index] = [addr[j], per[i]];
+            index++;
+          }
+        }
+      }
+      console.log(addToPercent);
+      // makecircles(addToPercent); ///// TO DO : make circles based on PTSD percent
+    }
+
 
     $.get("/delphidata", function(data) {
 
