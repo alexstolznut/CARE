@@ -27,24 +27,24 @@ function initMap() {
     var counties = [];
     var i = 0;
 
-    $.getJSON("/veteranenrollees.json", function (data) {
+//     $.getJSON("/veteranenrollees.json", function (data) {
 
-        var databycounty = data.DataByCounty;
-//        console.log(databycounty);
-        // Iterate the groups first.
-        $.each(databycounty, function (index, value) {
+//         var databycounty = data.DataByCounty;
+// //        console.log(databycounty);
+//         // Iterate the groups first.
+//         $.each(databycounty, function (index, value) {
 
-//            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
-//            // Get all the categories
-//            var StateAbbrev = databycounty[i].StateAbbrev;
-//
-//            counties[i] = databycounty[i].CountyName;
-//            enrollees[i] = databycounty[i].VeteranEnrollees;
-            i++;
+// //            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
+// //            // Get all the categories
+// //            var StateAbbrev = databycounty[i].StateAbbrev;
+// //
+// //            counties[i] = databycounty[i].CountyName;
+// //            enrollees[i] = databycounty[i].VeteranEnrollees;
+//             i++;
 
 
-        });
-    });
+//         });
+//     });
 
     var percent = [];
     var station = [];
