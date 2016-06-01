@@ -30,6 +30,49 @@ body {
     color:#21a1ea;
 }
 
+#info1 {
+    background-color: #ABD9F3;
+}
+
+#info3 {
+    background-color: #ABD9F3;
+}
+
+#info5 {
+    background-color: #ABD9F3;
+}
+
+.inside {
+    font-family: Montserrat;
+}
+
+.type1 {
+    font-family: Lato;
+    font-size: 50px;
+    text-align: center;
+}
+
+.type2 {
+    font-family: Lato;
+    font-size: 100px;
+    text-align: center;
+}
+
+.row h1 {
+    font-family: Montserrat;
+    font-size: 12px;
+}
+
+.row h2 {
+    font-family: Montserrat;
+    font-size: 20px;
+    text-align: center;
+}
+
+.row p{
+    font-family: Roboto;
+    font-weight:100;
+}
 
 .page-header.page-heading h1{
     font-family: Roboto;
