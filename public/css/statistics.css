@@ -32,14 +32,17 @@ body {
 
 #info1 {
     background-color: #ABD9F3;
+    text-align: right;
 }
 
 #info3 {
     background-color: #ABD9F3;
+    text-align: right;
 }
 
 #info5 {
     background-color: #ABD9F3;
+    text-align: right;
 }
 
 .inside {
@@ -50,6 +53,7 @@ body {
     font-family: Lato;
     font-size: 50px;
     text-align: center;
+
 }
 
 .type2 {
@@ -60,7 +64,7 @@ body {
 
 .row h1 {
     font-family: Montserrat;
-    font-size: 12px;
+    font-size: 17px;
 }
 
 .row h2 {
@@ -71,7 +75,7 @@ body {
 
 .row p{
     font-family: Roboto;
-    font-weight:100;
+    font-weight:300;
 }
 
 .page-header.page-heading h1{
