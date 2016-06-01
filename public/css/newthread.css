@@ -10,21 +10,24 @@ body {
     font-family: Montserrat;
     background-color: #F6F6F6;
     border: none;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow:1px 2px 4px rgba(0, 0, 0, .5);
+    /*height: 10%;*/
 }
 
 .nav.navbar-nav a:hover {
-    background-color: #E39090;
-    color: white;
+    background-color: #F6F6F6;
+    color: #97D4C6;
     text-shadow: none;
 }
 
-.navbar-brand {
+.navbar-branding {
     font-weight: 900;
     font-family: Montserrat;
-    font-size: 35px;
+    font-size:35px;
     float: left;
-
+    width:100%;
+    margin-left:15%;
+    color:#21a1ea;
 }
 
 #map {

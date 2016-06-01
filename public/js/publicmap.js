@@ -10,18 +10,18 @@ function initMap() {
     });
 
     var c = [];
-    
-    
+
+
     $.getJSON("/county.json", function (data) {
-        
+
         var i = 0;
-        
+
         $.each(data, function (index, value) {
 //            console.log(data[i].state + "  " + data[i].county + " county");
-            i++;            
+            i++;
         });
     });
-    
+
     var county = [];
     var enrollees = [];
     var counties = [];
@@ -37,22 +37,22 @@ function initMap() {
 //            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
 //            // Get all the categories
 //            var StateAbbrev = databycounty[i].StateAbbrev;
-//            
+//
 //            counties[i] = databycounty[i].CountyName;
 //            enrollees[i] = databycounty[i].VeteranEnrollees;
-            i++;   
-            
-            
+            i++;
+
+
         });
-        
-        
+
+
     });
 
     $.get("/delphidata", function(data) {
 
         var locations = [];
         var pair = [];
-               
+
         for (var i = 0; i < data.length; i++) {
             pair[1] = data[i].CITY;
             pair[2] = data[i].address + ", " + data[i].CITY;
@@ -70,11 +70,11 @@ function initMap() {
         }
 
     });
-    
-/////////// renders map    
+
+/////////// renders map
     var infowindow = new google.maps.InfoWindow();
     var geocoder = new google.maps.Geocoder();
-    
+
     function geocodeAddress(location) {
 
         geocoder.geocode( { 'address': location[1]}, function(results, status) {
@@ -94,14 +94,14 @@ function initMap() {
             }
           });
         }
-    
-/////////// creat markers 
+
+/////////// creat markers
     function createMarker(latlng,html){
           var marker = new google.maps.Marker({
             position: latlng,
             map: map
           });
-        
+
           gmarkers.push(marker);
 
           google.maps.event.addListener(marker, 'mouseover', function() {
@@ -113,7 +113,7 @@ function initMap() {
             infowindow.close();
           });
     }
-    
+
 // Removes the markers from the map, but keeps them in the array.
 function removeMarkers(){
     for(i=0; i<gmarkers.length; i++){
@@ -121,7 +121,7 @@ function removeMarkers(){
     }
 }
 
-/////////// autocomplete search box 
+/////////// autocomplete search box
 //    var autocomplete = new google.maps.places.Autocomplete(
 //    /** @type {!HTMLInputElement} */
 //    (document.getElementById('location')), {
@@ -165,17 +165,17 @@ function removeMarkers(){
 
               }
           });
-          
+
           console.log(stationvalues);
           // circles(stationvalues);
 
       });
     }
-    
+
     $('#clinic-form').submit(function(e) {
-    
+
         removeMarkers();
-        
+
         e.preventDefault();
         starting = $('#location').val();
 //        console.log("search for: " + starting);
@@ -186,24 +186,24 @@ function removeMarkers(){
             var str1;
             var str2 = starting;
             var j = 0;
-            
+
             for (var i = 0; i < data.length; i++) {
-                
+
                 str1 = data[i].ZIP_CODE;
 
                 if ((str1.localeCompare(str2)) == 0) {
-                    
+
                     console.log("inside: " + str1);
                     pair[1] = data[i].CITY;
                     pair[2] = data[i].address + ", " + data[i].CITY;
                     locations[j] = [pair[1], pair[2]];
-                    j++;                 
+                    j++;
                 }
-            } 
-            
+            }
+
             if(locations.length == 0) {
                 alert("No clinics in your area. Please consider the ones listed or Enter a nearby zipcode.");
-                
+
                 for (var i = 0; i < data.length; i++) {
                     pair[1] = data[i].CITY;
                     pair[2] = data[i].address + ", " + data[i].CITY;
@@ -211,11 +211,11 @@ function removeMarkers(){
                     locations[i] = [pair[1], pair[2]];
                 }
             }
-                        
+
             var i;
 
             for (i = 0; i < locations.length; i++) {
-              geocodeAddress(locations[i]);
+              geocodeAddress(locations[i]/*["San Diego", "3520 Lebon Dr, San Diego"]*/);
             }
         });
     });
