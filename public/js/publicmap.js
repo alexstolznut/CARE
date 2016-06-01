@@ -95,6 +95,26 @@ function initMap() {
           });
         }
 
+    function geocodeAddress2(location) {
+
+        geocoder.geocode( { 'address': location[1]}, function(results, status) {
+          //alert(status);
+            if (status == google.maps.GeocoderStatus.OK) {
+
+              //alert(results[0].geometry.location);
+              map.setCenter(results[0].geometry.location);
+              map.setZoom(14);
+            }
+            else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                console.log("over query limit")
+            }
+            else
+            {
+              alert("some problem in geocode" + status);
+            }
+          });
+        }
+
 /////////// creat markers
     function createMarker(latlng,html){
           var marker = new google.maps.Marker({
@@ -122,11 +142,12 @@ function removeMarkers(){
 }
 
 /////////// autocomplete search box
-//    var autocomplete = new google.maps.places.Autocomplete(
-//    /** @type {!HTMLInputElement} */
-//    (document.getElementById('location')), {
-//        types: ['geocode']
-//    });
+   var autocomplete = new google.maps.places.Autocomplete(
+   /** @type {!HTMLInputElement} */
+   (document.getElementById('location')), {
+       types: ['geocode']
+   });
+
 
     // load clinic data
     $.getJSON("/facilities.json", function (data) {
@@ -172,53 +193,88 @@ function removeMarkers(){
       });
     }
 
+
     $('#clinic-form').submit(function(e) {
 
-        removeMarkers();
-
+        // removeMarkers();
+        var city = "";
+        var address = "";
+        var index = 0;
+        var fulladd = "";
+        var i;
         e.preventDefault();
         starting = $('#location').val();
-//        console.log("search for: " + starting);
+       console.log(starting);
         $.post( "/map1", function( data ) {
+            for (i=0; i<starting.length; i++){
+              index = i;
+              if (starting[i]!=","){
+                address = address + starting[i];
 
-            var locations = [];
-            var pair = [];
-            var str1;
-            var str2 = starting;
-            var j = 0;
-
-            for (var i = 0; i < data.length; i++) {
-
-                str1 = data[i].ZIP_CODE;
-
-                if ((str1.localeCompare(str2)) == 0) {
-
-                    console.log("inside: " + str1);
-                    pair[1] = data[i].CITY;
-                    pair[2] = data[i].address + ", " + data[i].CITY;
-                    locations[j] = [pair[1], pair[2]];
-                    j++;
-                }
+              }
+              else break;
             }
-
-            if(locations.length == 0) {
-                alert("No clinics in your area. Please consider the ones listed or Enter a nearby zipcode.");
-
-                for (var i = 0; i < data.length; i++) {
-                    pair[1] = data[i].CITY;
-                    pair[2] = data[i].address + ", " + data[i].CITY;
-
-                    locations[i] = [pair[1], pair[2]];
-                }
+            for (i=i+1; i<starting.length; i++){
+              index = i;
+              if (starting[i]!=","){
+                city = city + starting[i];
+              }
+              else break;
             }
+            console.log(city);
+            fulladd = fulladd + address + "," + city;
+            geocodeAddress2([city, fulladd]);
 
-            var i;
-
-            for (i = 0; i < locations.length; i++) {
-              geocodeAddress(locations[i]/*["San Diego", "3520 Lebon Dr, San Diego"]*/);
-            }
         });
     });
+
+    // $('#clinic-form').submit(function(e) {
+
+    //     // removeMarkers();
+
+    //     e.preventDefault();
+    //     starting = $('#location').val();
+    //    // console.log("search for: " + starting);
+    //     $.post( "/map1", function( data ) {
+
+    //         var locations = [];
+    //         var pair = [];
+    //         var str1;
+    //         var str2 = starting;
+    //         var j = 0;
+
+    //         for (var i = 0; i < data.length; i++) {
+
+    //             str1 = data[i].ZIP_CODE;
+
+    //             if ((str1.localeCompare(str2)) == 0) {
+
+    //                 console.log("inside: " + str1);
+    //                 pair[1] = data[i].CITY;
+    //                 pair[2] = data[i].address + ", " + data[i].CITY;
+    //                 locations[j] = [pair[1], pair[2]];
+    //                 j++;
+    //             }
+    //         }
+
+    //         if(locations.length == 0) {
+    //             alert("No clinics in your area. Please consider the ones listed or Enter a nearby zipcode.");
+
+    //             for (var i = 0; i < data.length; i++) {
+    //                 pair[1] = data[i].CITY;
+    //                 pair[2] = data[i].address + ", " + data[i].CITY;
+
+    //                 locations[i] = [pair[1], pair[2]];
+    //             }
+    //         }
+
+    //         var i;
+
+    //         for (i = 0; i < locations.length; i++) {
+    //           geocodeAddress2(locations[i]/*["San Diego", "3520 Lebon Dr, San Diego"]*/);
+    //         }
+    //     });
+    // });
 }
 
 
