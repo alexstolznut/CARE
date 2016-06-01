@@ -50,6 +50,8 @@ function initMap() {
     var station = [];
     var facility = [];
     var addresses = [];
+    var lati = [];
+    var longi = [];
     $.getJSON("/facilities.json", function (data) {
 
         // Iterate the groups first.
@@ -57,13 +59,15 @@ function initMap() {
         $.each(eachdata, function (index, value) {
           facility[index] = value.facility_id;
           addresses[index] = value.address + "," + value.city;
+          lati[index] = value.latitude;
+          longi[index] = value.longitude;
         }); // end of second each
-    getPTSD(facility, addresses);
+    getPTSD(facility, addresses, lati, longi);
 
     }); // end of second getjson
 
 
-    function getPTSD(fac, addr){
+    function getPTSD(fac, addr, lat, lon){
       // var percentToStation = [];
       var index = 0;
 
@@ -79,26 +83,29 @@ function initMap() {
             } // of of if
           }); // end of each
 
-          comparePTSD(fac,addr,percent,station);
+          comparePTSD(fac,addr, lat, lon, percent,station);
 
       }); // end of first get json
       // return percentToStation;
     }
 
-    function comparePTSD(fac,addr,per,stat) {
+    function comparePTSD(fac,addr,lat,lon,per,stat) {
       var addToPercent = [];
       var index = 0;
       for (var i = 0; i<per.length; i++){
         for (var j=0; j<addr.length; j++){
           if (stat[i] == fac[j]) {
-            addToPercent[index] = [addr[j], per[i]];
+            addToPercent[index] = [lat[i], lon[i], addr[j], per[i]];
             index++;
           }
         }
       }
-      console.log(addToPercent); // addToPercent[0] is the address, addToPercent[1] is the percentage of veterans in that address with PTSD
+      console.log(addToPercent);
+      // [0] is latitute, [1] is longitude
+      //addToPercent[2] is the address, addToPercent[3] is the percentage of veterans in that address with PTSD
       // makecircles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
+
 
 
     $.get("/delphidata", function(data) {
