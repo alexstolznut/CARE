@@ -80,13 +80,22 @@
 
     <script type="text/javascript">
     	var show = false;
+        var showE = false;
     	function showReply(id){
     		if(!show)
     		{
+                if(showE == true)
+                {
+                    document.getElementById("editname"+id).style.display="none";
+                    document.getElementById("editdescription"+id).style.display="none";
+                    document.getElementById("editsubmit"+id).style.display="none";
+                    document.getElementById("editcancel"+id).style.display="none";
+                    showE = false;
+                }
     			document.getElementById("name"+id).style.display="block";
     			document.getElementById("description"+id).style.display="block";
     			document.getElementById("submit"+id).style.display="inline";
-                document.getElementById("cancel"+id).style.display="inline";
+                document.getElementById("cancel"+id).style.display="inline";               
     			show = true;
     		}
     		else
@@ -97,7 +106,33 @@
                 document.getElementById("cancel"+id).style.display="none";
     			show = false;
     		}
-    	}
+    	};
+        function showEdit(id){
+            if(!showE)
+            {
+                if(show)
+                {
+                    document.getElementById("name"+id).style.display="none";
+                    document.getElementById("description"+id).style.display="none";
+                    document.getElementById("submit"+id).style.display="none";
+                    document.getElementById("cancel"+id).style.display="none";
+                    show = false;
+                }
+                document.getElementById("editname"+id).style.display="block";
+                document.getElementById("editdescription"+id).style.display="block";
+                document.getElementById("editsubmit"+id).style.display="inline";
+                document.getElementById("editcancel"+id).style.display="inline";
+                showE = true;
+            }
+            else
+            {
+                document.getElementById("editname"+id).style.display="none";
+                document.getElementById("editdescription"+id).style.display="none";
+                document.getElementById("editsubmit"+id).style.display="none";
+                document.getElementById("editcancel"+id).style.display="none";
+                showE = false;
+            }
+        }
     </script>
     <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
 <script src="/js/forums.js"></script>
