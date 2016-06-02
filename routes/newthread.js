@@ -1,5 +1,7 @@
 exports.view = function(req, res) {
-
-	res.render('newthread',{});
+	if(req.user)
+		res.render('newthread',{user: req.user});
+	else
+		res.redirect('/forums');
 }
 
