@@ -32,7 +32,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-fixed-top" role="navigation">
-        <div class="fluid-container">
+        <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -41,26 +41,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <a href="/"><h1 class="navbar-branding" style="font-size:35px;">A M E R I C A R E</h1></a>
+                <a class="navbar-brand" href="/">A M E R I C A R E</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/map"><h1 class="side-menu">Explore Map</h1></a>
+                        <a href="/map">Find Clinics</a>
                     </li>
                     <li>
-                        <a href="/forums"><h1 class="side-menu">Forums</h1></a>
+                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
-                        <a href="/learnmore"><h1 class="side-menu">Learn More</h1></a>
+                        <a href="/forums">Forums</a>
                     </li>
                     <li>
-                        <a href="/statistics"><h1 class="side-menu">Statistics</h1></a>
+                        <a href="/learnmore">Learn More</a>
                     </li>
                     <li>
-                        <a href="/"><h1 class="side-menu">Logout</h1></a>
+                        <a href="/">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -70,30 +69,25 @@
     </nav>
 
     <div id="explore" style="height: 93vh;">
+        <div id="map"></div>
 
-		<div id="map"></div>
-		<div id="filter">
-      <div class="fluid-container">
-            <div id="header">Find a Clinic or Hospital Near You</div>
+        <div id="filter">
+            <div id="header">Find a Clinic Near You</div>
                 <br>
                 <br>
                 <br>
 
                 <form id="clinic-form" method="post" action="/map">
-                    <fieldset class="form-group">
-                        <label id="loca" for="starting">Your Location</label>
-                        <input name="location" type="text" class="form-control" id="location" placeholder="Type in Your Zipcode" required>
+                    <center><fieldset class="form-group">
+                        <label id="loca" for="location">Search by Location:</label>
+                        <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
                         <br>
-                    </fieldset>
-
-                    <center>
-                        <br>
-                        <input type="submit" class="btn btn-lg btn-primary" value="Find Clinics Around Me" syle="font-size: 24px;">
-                    </center>
+                    </fieldset></center>
+                    <br>
+                    <input type="submit" class="btn btn-lg btn-default" value="Find Clinics Around Me">
                 </form>
               </div>
-
-		</div>
+        </div>
 
     </div>
     <script src="//d3js.org/d3.v3.min.js"></script>

@@ -45,16 +45,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/map">Explore Map</a>
+                        <a href="/map">Find Clinics</a>
+                    </li>
+                    <li>
+                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
                         <a href="/forums">Forums</a>
                     </li>
                     <li>
                         <a href="/learnmore">Learn More</a>
-                    </li>
-                    <li>
-                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
                         <a href="/">Logout</a>
@@ -82,7 +82,12 @@
 
                       <p class="lead">
                         Feel free to post any questions or stories here. Click on a thread's title to see the discussion.
-                        <br><a href="newthread">Click to start a new thread here</a>
+                        <br>
+                        {{#if user.id}}
+                            <a href="newthread">Click to start a new thread here</a>
+                        {{else}}
+                            <a href="/auth/facebook">Login to Facebook to start a new thread</a>
+                        {{/if}}
                       </p>
                       {{#if data}}
                       <table class="table forum table-striped">

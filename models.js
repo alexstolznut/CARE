@@ -7,6 +7,8 @@ var MessageSchema = mongoose.Schema({
 	description: 'String',
 	level: 'Number',
 	parentId: 'String',
+	facebookID: 'String',
+	active: 'String',
 	replies: [],
 	temp: []
 });

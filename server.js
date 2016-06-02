@@ -17,7 +17,7 @@ require("dotenv").load();
 // bug fix 1
 var express = require('express');
 
-var handlebars = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
 var app = express();
 
@@ -36,6 +36,21 @@ var parser = {
     body: require("body-parser"),
     cookie: require("cookie-parser")
 };
+var handlebars = exphbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        equals: function(lvalue, rvalue, options) {
+    if (arguments.length < 3)
+        throw new Error("Handlebars Helper equal needs 2 parameters");
+    if( lvalue!=rvalue ) {
+        return options.inverse(this);
+    } else {
+        return options.fn(this);
+    }
+    }
+}
+});
+
 
 // Database Connection
 var db = mongoose.connection;
@@ -60,7 +75,7 @@ app.use(session_middleware);
 
 // Middleware
 app.set("port", process.env.PORT || 3000);
-app.engine("html", handlebars());
+app.engine("html", handlebars.engine);
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 app.use(express.static(path.join(__dirname, "/public")));
@@ -139,9 +154,15 @@ app.get('/statistics', router.statistics.view);
 // Requests accepted for message API
 app.post("/message", router.message.insert);
 app.get("/api/message/parent", router.message.parent);
+app.get("/api/user", router.message.user);
+app.post('/api/message/update', router.message.update);
+app.post('/api/message/delete', router.message.delete);
 app.get("/api/message/children", router.message.children);
 
-app.get("/thread", function(req,res){res.render('thread',{})});
+app.get("/thread", function(req,res){
+    console.log(req.user);
+    res.render('thread',{data: req.user });
+});
 //app.put("/api/message/:id(\\d+)", router.message.update);
 //app.delete("/api/message/:id(\\d+)", router.message.delete);
 app.get("/", function(req, res) {
@@ -217,6 +238,8 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
     done(null, user);
 });
+// Handlebars helper
+
 
 // Start Server
 http.createServer(app).listen(app.get("port"), function() {

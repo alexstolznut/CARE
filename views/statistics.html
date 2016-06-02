@@ -32,10 +32,8 @@
   padding: 3px;
   margin: 1px;
   width: 500px;
-  color: white;
+  color: black;
 }
-
-
 
 .arc text {
   font: 10px sans-serif;
@@ -52,9 +50,10 @@
 
 </head>
 <body>
-        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-        <script src="https://d3js.org/queue.v1.min.js"></script>
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
     <!-- Navigation -->
     <nav class="navbar navbar-fixed-top" role="navigation">
         <div class="container">
@@ -72,16 +71,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/map">Explore Map</a>
+                        <a href="/map">Find Clinics</a>
+                    </li>
+                    <li>
+                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
                         <a href="/forums">Forums</a>
                     </li>
                     <li>
                         <a href="/learnmore">Learn More</a>
-                    </li>
-                    <li>
-                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
                         <a href="/">Logout</a>
@@ -96,23 +95,98 @@
 
     <script type="text/javascript" src="/js/statistics.js"></script>
 
-    <br>
-    Unique Veterans Seen In Inpatient Mental Health
-    <div class="chart"></div>
-    Number of Service Users with Possible Mental Illness (above)
-    <br>
+
 
     <br>
-    Proportion of Veterans with Possible Mental Illness Seen in Any Mental Health (in blue)
-    <div class="pie"></div>
-    Percent of Service Users with Possible Mental Illness (in blue)
-    <div class="pie2"></div>
-    Proportion of Veterans with Possible Mental Illness Seen in Inpatient Mental Health (in blue)
-    <div class="pie3"></div>
+    <div class="row" id="info0">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-3">
+            <div class="type1">5,585</div>
+            <h2>Veterans</h2>
+
+        </div>
+        <div class="col-md-3">
+            <h1>Unique Veterans Seen In Inpatient Mental Health</h1>
+            <br>
+            <p>This is the number of unique veterans that are currently in Inpatient Mental Health treatment.
+                This means that they live and receive treatment at the same facility. This number
+                was taken from the official data.gov Mental Health In Veterans dataset. The numbers were totaled up
+                from each clinical station.</p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
     <br>
 
-    Proportion of Veterans with Confirmed Mental Illness Seen in Any Mental Health (in blue)
-    <div class="pie4"></div>
+    <div class="row" id="info1">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <h1>Number of Service Users with Possible Mental Illness</h1>
+            <br>
+            <p>asldkalskndaksd</p>
+        </div>
+        <div class="col-md-3">
+            <div class="type2">2,116,713</div>
+            <h2>Users</h2>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br>
+
+    <div class="row" id="info2">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <div class="pie"></div>
+        </div>
+        <div class="col-md-3">
+            <h1>Proportion of Veterans with Possible Mental Illness Seen in Any Mental Health</h1>
+            <br>
+            <p>asldkalskndaksd</p>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row" id="info3">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <h1>Percent of Service Users with Possible Mental Illness</h1>
+            <br>
+            <p>asldkalskndaksd</p>
+        </div>
+        <div class="col-md-3">
+            <div class="pie2"></div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row" id="info4">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <div class="pie3"></div>
+        </div>
+        <div class="col-md-3">
+            <h1>Proportion of Veterans with Possible Mental Illness Seen in Inpatient Mental Health</h1>
+            <br>
+            <p>asldkalskndaksd</p>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row" id="info5">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <h1>Proportion of Veterans with Confirmed Mental Illness Seen in Any Mental Health</h1>
+            <br>
+            <p>asldkalskndaksd</p>
+        </div>
+        <div class="col-md-3">
+            <div class="pie4"></div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
 
 
 </body>

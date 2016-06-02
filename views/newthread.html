@@ -50,16 +50,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/map">Explore Map</a>
+                        <a href="/map">Find Clinics</a>
+                    </li>
+                    <li>
+                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
                         <a href="/forums">Forums</a>
                     </li>
                     <li>
                         <a href="/learnmore">Learn More</a>
-                    </li>
-                    <li>
-                        <a href="/statistics">Statistics</a>
                     </li>
                     <li>
                         <a href="/">Logout</a>
@@ -79,21 +79,22 @@
 
         	<div class="col-md-6">
 
-			<center>
-			<h1> Make a New Thread </h1>
+
+			<h1> Start a New Thread</h1>
 			<form action="/message" method="post">
 
 				<fieldset class="form-group">
-				    Name (or anon): <input class="form-control" type="text" name="name"><br>
-				    Title:<textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
-				    Body:<textarea name="description" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
+				    <label for="usr">Name:</label> <input id="usr" class="form-control" type="text" name="name"><br>
+				    <label for="usr">Discussion Title:</label><textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
+				    <label for="usr">Discussion Body:</label><textarea name="description" class="form-control" id="exampleTextarea" rows="3"></textarea><br>
                     <input type = "hidden" value = "0" name = "level">
-				    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                    <input type = "hidden" value = "{{user.id}}" name = "facebookId">
+				    <button type="submit" value="Submit" class="btn btn-primary">Post your Discussion</button>
 				</fieldset>
 
 
 			</form>
-			</center>
+
 			</div>
 
 			<div class="col-md-3"></div>
