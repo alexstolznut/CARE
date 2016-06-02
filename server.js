@@ -146,6 +146,8 @@ app.get('/auth/facebook/callback',
     });
 
 app.get("/forums", router.index.view);
+app.get("/mytopics", router.index.topics);
+app.get("/myresponses", router.index.responses);
 app.get('/newthread', router.newthread.view);
 app.get('/map', router.map.view);
 app.get('/learnmore', router.learnmore.view);

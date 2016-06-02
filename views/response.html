@@ -76,26 +76,19 @@
                 <div id="forums" class="container">
 
                       <div class="page-header page-heading">
-                        {{#if user.id}}
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#">Forums</a></li>
+                            <li ><a href="/forums">Forums</a></li>
                             <li><a href="/mytopics">My Topics</a></li>
-                            <li><a href="/myresponses">My Responses</a></li>
+                            <li class="active"><a href="#">My Responses</a></li>
                         </ul>
-                        {{/if}}
-                        <h1 class="pull-left">The Discussion Forums</h1>
+                        <h1 class="pull-left">My Responses</h1>
 
                         <div class="clearfix"></div>
                       </div>
 
                       <p class="lead">
-                        Feel free to post any questions or stories here. Click on a thread's title to see the discussion.
-                        <br>
-                        {{#if user.id}}
-                            <a href="newthread">Click to start a new thread here</a>
-                        {{else}}
-                            <a href="/auth/facebook">Login to Facebook to start a new thread</a>
-                        {{/if}}
+                        Below are your responses on threads. Click on the title to see the full discussion on your response.
+                      
                       </p>
                       {{#if data}}
                       <table class="table forum table-striped">
