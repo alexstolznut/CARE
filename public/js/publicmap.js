@@ -27,26 +27,86 @@ function initMap() {
     var counties = [];
     var i = 0;
 
-    $.getJSON("/veteranenrollees.json", function (data) {
+//     $.getJSON("/veteranenrollees.json", function (data) {
 
-        var databycounty = data.DataByCounty;
-//        console.log(databycounty);
+//         var databycounty = data.DataByCounty;
+// //        console.log(databycounty);
+//         // Iterate the groups first.
+//         $.each(databycounty, function (index, value) {
+
+// //            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
+// //            // Get all the categories
+// //            var StateAbbrev = databycounty[i].StateAbbrev;
+// //
+// //            counties[i] = databycounty[i].CountyName;
+// //            enrollees[i] = databycounty[i].VeteranEnrollees;
+//             i++;
+
+
+//         });
+//     });
+
+    var percent = [];
+    var station = [];
+    var facility = [];
+    var addresses = [];
+    var lati = [];
+    var longi = [];
+    $.getJSON("/facilities.json", function (data) {
+
         // Iterate the groups first.
-        $.each(databycounty, function (index, value) {
+        var eachdata = data.VAFacilityData;
+        $.each(eachdata, function (index, value) {
+          facility[index] = value.facility_id;
+          addresses[index] = value.address + "," + value.city;
+          lati[index] = value.latitude;
+          longi[index] = value.longitude;
+        }); // end of second each
+    getPTSD(facility, addresses, lati, longi);
 
-//            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
-//            // Get all the categories
-//            var StateAbbrev = databycounty[i].StateAbbrev;
-//
-//            counties[i] = databycounty[i].CountyName;
-//            enrollees[i] = databycounty[i].VeteranEnrollees;
-            i++;
-
-
-        });
+    }); // end of second getjson
 
 
-    });
+    function getPTSD(fac, addr, lat, lon){
+      // var percentToStation = [];
+      var index = 0;
+
+      $.getJSON("/ptsd.json", function (data) {
+          // Iterate the groups first.
+          var ind = 0;
+          $.each(data, function (index, value) {
+            if (value.Category == "Station-Level Stats" && value.Item == "% of Veterans served with PTSD") {
+              var loc = value.Location;
+              percent[ind] = value.Value;
+              station[ind] = loc;
+              ind++;
+            } // of of if
+          }); // end of each
+
+          comparePTSD(fac,addr, lat, lon, percent,station);
+
+      }); // end of first get json
+      // return percentToStation;
+    }
+
+    function comparePTSD(fac,addr,lat,lon,per,stat) {
+      var addToPercent = [];
+      var index = 0;
+      for (var i = 0; i<per.length; i++){
+        for (var j=0; j<addr.length; j++){
+          if (stat[i] == fac[j]) {
+            addToPercent[index] = [lat[i], lon[i], addr[j], per[i]];
+            index++;
+          }
+        }
+      }
+      console.log(addToPercent);
+      // [0] is latitute, [1] is longitude
+      //addToPercent[2] is the address, addToPercent[3] is the percentage of veterans in that address with PTSD
+      // circles(addToPercent); ///// TO DO : make circles based on PTSD percent
+    }
+
+
 
     $.get("/delphidata", function(data) {
 
@@ -149,50 +209,6 @@ function removeMarkers(){
    });
 
 
-    // load clinic data
-    $.getJSON("/facilities.json", function (data) {
-      // Iterate the groups first.
-      var facilitydata = data.VAFacilityData;
-      // console.log(fdata);
-      // Iterate the groups first.
-      createCircles(facilitydata);
-
-    });
-
-    function createCircles(facilities){
-      var stationvalues = [];
-
-      $.getJSON("/vamentalhealth.json", function (data) {
-          // Iterate the groups first.
-          var i = 0;
-          $.each(data, function (index, value) {
-
-              // Get all the categories
-              var items = this.Item;
-              if (items == "Proportion of Veterans with Confirmed Mental Illness Seen in Inpatient Mental Health") {
-                  var lat;
-                  var lon;
-                  for (j = 0; j < facilities.length; j++){
-                    if (facilities[j].facility_id == this.Station) {
-                      lat = facilities[j].latitude;
-                      lon = facilities[j].longitude;
-                      break;
-                    }
-                  }
-
-                  var station = this.Station;
-                  var val = this.Value;
-                  stationvalues[i] = [station,val, lat, lon];
-
-              }
-          });
-
-          console.log(stationvalues);
-          // circles(stationvalues);
-
-      });
-    }
-
 
     $('#clinic-form').submit(function(e) {
 
@@ -277,23 +293,4 @@ function removeMarkers(){
     // });
 }
 
-
-//function initMap() {
-//  var map = new google.maps.Map(document.getElementById('map'), {
-//    center: {lat: 32.715738, lng: -117.1610838},
-//    zoom: 9
-//  });
-//
-//var autocomplete = new google.maps.places.Autocomplete(
-//    /** @type {!HTMLInputElement} */
-//    (document.getElementById('location')), {
-//        types: ['geocode']
-//    });
-//}
-
-//$('#clinic-form').submit(function(e) {
-//    e.preventDefault();
-//    var starting = $('#location').val();
-//    // window.location.href = '/map?starting=' + starting;
-//});
 
