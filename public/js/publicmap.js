@@ -1,48 +1,94 @@
 var county = [];
+var state = [];
+var countyC = [];
 var gmarkers = [];
+var center = [];
+var test = [];
 
 function initMap() {
+    
+    var citymap = {
+        chicago: {
+          center: {lat: 41.878, lng: -87.629},
+          population: 2714856
+        },
+        newyork: {
+          center: {lat: 40.714, lng: -74.005},
+          population: 8405837
+        },
+        losangeles: {
+          center: {lat: 34.052, lng: -118.243},
+          population: 3857799
+        }
+      };
 
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
+      zoom: 8,
       center: new google.maps.LatLng(32.715738,-117.1610838),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+    
+    console.log(citymap);
+    
+    for (var city in citymap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 0,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 5
+          });
+        }
 
-    var c = [];
-    
-    
     $.getJSON("/county.json", function (data) {
         
         var i = 0;
+        var lat;
+        var lng;
         
         $.each(data, function (index, value) {
-//            console.log(data[i].state + "  " + data[i].county + " county");
+            
+            county[i] = data[i].county;
+            state[county[i]] = data[i].state;
+            countyC[i] = data[i].county + " county";
+            
+            lat = i;
+            lng = i;
+            
+            center[lat] = data[i].latitude;
+            center[lng] = data[i].longitude;
+            
             i++;            
         });
+        
     });
     
-    var county = [];
-    var enrollees = [];
+    var ct;
+    var enrollees;
     var counties = [];
     var i = 0;
 
     $.getJSON("/veteranenrollees.json", function (data) {
-
+      
         var databycounty = data.DataByCounty;
-//        console.log(databycounty);
+        console.log(center);
         // Iterate the groups first.
         $.each(databycounty, function (index, value) {
 
-//            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
-//            // Get all the categories
-//            var StateAbbrev = databycounty[i].StateAbbrev;
-//            
-//            counties[i] = databycounty[i].CountyName;
-//            enrollees[i] = databycounty[i].VeteranEnrollees;
-            i++;   
+            // Get all the categories
+            var StateAbbrev = databycounty[i].StateAbbrev;          
+            ct = databycounty[i].CountyName;
+            enrollees = databycounty[i].VeteranEnrollees;
             
-            
+            var j;
+            for(j = 0; j < county.length; j++) {
+//                if
+            }
+            i++;      
         });
         
         
@@ -172,13 +218,15 @@ function removeMarkers(){
       });
     }
     
+    
+//----------------- Search --------------------   
     $('#clinic-form').submit(function(e) {
     
         removeMarkers();
         
         e.preventDefault();
         starting = $('#location').val();
-//        console.log("search for: " + starting);
+
         $.post( "/map1", function( data ) {
 
             var locations = [];
