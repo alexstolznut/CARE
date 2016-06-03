@@ -1,5 +1,7 @@
 var county = [];
 var gmarkers = [];
+var overlay;
+var layer;
 
 function initMap() {
 
@@ -7,6 +9,10 @@ function initMap() {
       zoom: 10,
       center: new google.maps.LatLng(32.715738,-117.1610838),
       mapTypeId: google.maps.MapTypeId.ROADMAP
+      // overlay.onAdd = new google.maps.OverlayView();
+      // overlay.onAdd = function() {
+      //   layer = d3.select(this.getPanes().overlayMouseTarget).append("div").attr("class", "stations");
+      // }
     });
 
     var c = [];
@@ -103,8 +109,11 @@ function initMap() {
       // console.log(addToPercent);
       // [0] is latitute, [1] is longitude
       //addToPercent[2] is the address, addToPercent[3] is the percentage of veterans in that address with PTSD
+
+
       circles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
+
 
     function circles(addtoper) {
       for (var i=0; i<addtoper.length;i++) {
@@ -121,6 +130,50 @@ function initMap() {
         //   }
 
       }
+  //     overlay.draw = function() {
+  //       var projection = this.getProjection(), padding = 10;
+  //       var marker = layer.selectAll("svg").data(d3.entries(data)).each(transform)
+  //                         .enter().append("svg:svg")
+  //                         .each(transform)
+  //                         .attr("class", "marker");
+  //
+  //     marker.append("svg:circle")
+  //                       .attr("r", 4.5)
+  //                       .attr("cx", padding)
+  //                       .attr("cy", padding)
+  //                       .on("click", expandNode)
+  //                       .on("dbclick", contractNode)
+  //                       .on("mouseover",function(d){ console.log(d.key); })
+  //
+  //     marker.append("svg:text")
+  //                         .attr("x", padding + 7)
+  //                         .attr("y", padding)
+  //                         .attr("dy", ".31em")
+  //                         .attr("class", "marker_text")
+  //                         .text(function(d) {return d.key; });
+  //     function transform(d){
+  //       d = new google.maps.LatLng(d.value[1], d.value[0]);
+  //       d= projection.fromLatLngToDividePixel(d);
+  //       return d3.select(this).style("left", (d.x - padding))
+  //     }
+  //
+  //     function expandNode() {
+  //       d3.select(this).transition()
+  //                       .duration(100)
+  //                       .attr("r",7)
+  //     };
+  //
+  //     function contractNode(){
+  //       d3.select(this).transition()
+  //                       .duration(100)
+  //                       .attr("r",4.5)
+  //     };
+  //   };
+  //   overlay.setMap(map);
+  // }
+  //     }
+  //     }
+
     }
 
 
