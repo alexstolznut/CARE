@@ -125,11 +125,11 @@ function initMap() {
 
         // console.log(addtoper[333][1]);
         // console.log(addtoper[333][0]);
-        var myLatLng = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
-          var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-          });
+        // var myLatLng = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+        //   var marker = new google.maps.Marker({
+        //     position: myLatLng,
+        //     map: map,
+        //   });
 
         //   gmarkers.push(marker);
 
