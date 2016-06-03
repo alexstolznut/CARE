@@ -54,7 +54,7 @@ var handlebars = exphbs.create({
 
 // Database Connection
 var db = mongoose.connection;
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/cogs121');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1/cogs121');
 db.on('error', console.error.bind(console, 'Mongo DB Connection Error:'));
 db.once('open', function(callback) {
     console.log("Database connected successfully.");
@@ -146,6 +146,8 @@ app.get('/auth/facebook/callback',
     });
 
 app.get("/forums", router.index.view);
+app.get("/mytopics", router.index.topics);
+app.get("/myresponses", router.index.responses);
 app.get('/newthread', router.newthread.view);
 app.get('/map', router.map.view);
 app.get('/learnmore', router.learnmore.view);

@@ -1,5 +1,7 @@
 var county = [];
 var gmarkers = [];
+var overlay;
+var layer;
 
 function initMap() {
 
@@ -7,6 +9,10 @@ function initMap() {
       zoom: 10,
       center: new google.maps.LatLng(32.715738,-117.1610838),
       mapTypeId: google.maps.MapTypeId.ROADMAP
+      // overlay.onAdd = new google.maps.OverlayView();
+      // overlay.onAdd = function() {
+      //   layer = d3.select(this.getPanes().overlayMouseTarget).append("div").attr("class", "stations");
+      // }
     });
 
     var c = [];
@@ -95,17 +101,80 @@ function initMap() {
       for (var i = 0; i<per.length; i++){
         for (var j=0; j<addr.length; j++){
           if (stat[i] == fac[j]) {
-            addToPercent[index] = [lat[i], lon[i], addr[j], per[i]];
+            addToPercent[index] = [lat[i], lon[i], addr[j], per[i], stat[i]];
             index++;
           }
         }
       }
-      console.log(addToPercent);
+      // console.log(addToPercent);
       // [0] is latitute, [1] is longitude
       //addToPercent[2] is the address, addToPercent[3] is the percentage of veterans in that address with PTSD
-      // circles(addToPercent); ///// TO DO : make circles based on PTSD percent
+
+
+      circles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
 
+
+    function circles(addtoper) {
+      for (var i=0; i<addtoper.length;i++) {
+        geocodeAddress()
+        // console.log(addtoper[i][0]);
+        // var myLatLng = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+        //   var marker = new google.maps.Marker({
+        //     position: myLatLng,
+        //     map: map,
+        //     title: 'Hello World!'
+        //   });
+        //   if (addtoper[i][4] == "664") {
+        //     console.log("found");
+        //   }
+
+      }
+  //     overlay.draw = function() {
+  //       var projection = this.getProjection(), padding = 10;
+  //       var marker = layer.selectAll("svg").data(d3.entries(data)).each(transform)
+  //                         .enter().append("svg:svg")
+  //                         .each(transform)
+  //                         .attr("class", "marker");
+  //
+  //     marker.append("svg:circle")
+  //                       .attr("r", 4.5)
+  //                       .attr("cx", padding)
+  //                       .attr("cy", padding)
+  //                       .on("click", expandNode)
+  //                       .on("dbclick", contractNode)
+  //                       .on("mouseover",function(d){ console.log(d.key); })
+  //
+  //     marker.append("svg:text")
+  //                         .attr("x", padding + 7)
+  //                         .attr("y", padding)
+  //                         .attr("dy", ".31em")
+  //                         .attr("class", "marker_text")
+  //                         .text(function(d) {return d.key; });
+  //     function transform(d){
+  //       d = new google.maps.LatLng(d.value[1], d.value[0]);
+  //       d= projection.fromLatLngToDividePixel(d);
+  //       return d3.select(this).style("left", (d.x - padding))
+  //     }
+  //
+  //     function expandNode() {
+  //       d3.select(this).transition()
+  //                       .duration(100)
+  //                       .attr("r",7)
+  //     };
+  //
+  //     function contractNode(){
+  //       d3.select(this).transition()
+  //                       .duration(100)
+  //                       .attr("r",4.5)
+  //     };
+  //   };
+  //   overlay.setMap(map);
+  // }
+  //     }
+  //     }
+
+    }
 
 
     $.get("/delphidata", function(data) {
@@ -143,6 +212,7 @@ function initMap() {
 
               //alert(results[0].geometry.location);
               map.setCenter(results[0].geometry.location);
+              // console.log(results[0].geometry.location);
               createMarker(results[0].geometry.location,location[0]+"<br>"+location[1]);
             }
             else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {

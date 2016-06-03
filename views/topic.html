@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/map.css">
+    <link rel="stylesheet" href="/css/forums.css">
     <script type="text/javascript" src="/js/jquery.js"></script>
-    <script type="text/javascript" src="/js/papaparse.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -14,8 +14,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!--Roboto Font-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -23,13 +21,12 @@
     <!--Lato Font-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
 
+    <!--Monserrat Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-  </head>
-  <body>
-<!--    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>-->
-<!--    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
-<!--    <script src="//d3js.org/topojson.v1.min.js"></script>-->
-<!--    <script src="https://d3js.org/queue.v1.min.js"></script>-->
+</head>
+
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-fixed-top" role="navigation">
@@ -69,33 +66,68 @@
         <!-- /.container -->
     </nav>
 
-    <div id="explore" style="height: 93vh;">
-        <div id="map"></div>
+    <!-- Page Content -->
+    <div class="container">
 
-        <div id="filter">
-            <div id="header">Find a Clinic Near You</div>
-                <br>
-                <br>
-                <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
 
-                <form id="clinic-form" method="post" action="/map">
-                    <center><fieldset class="form-group">
-                        <label id="loca" for="location">Search by Location:</label>
-                        <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
+                <div id="forums" class="container">
+
+                      <div class="page-header page-heading">
+                        <ul class="nav nav-tabs">
+                            <li ><a href="/forums">Forums</a></li>
+                            <li class="active"><a href="#">My Topics</a></li>
+                            <li><a href="/myresponses">My Responses</a></li>
+                        </ul>
+                        <h1 class="pull-left">My Topics</h1>
+
+                        <div class="clearfix"></div>
+                      </div>
+
+                      <p class="lead">
+                        Below are the forum topics you have posted. Feel free to post any questions or stories here. Click on a thread's title to see the discussion.
                         <br>
-                    </fieldset></center>
-                    <br>
-                    <input type="submit" class="btn btn-lg btn-default" value="Find Clinics Around Me">
-                </form>
-              </div>
+                        {{#if user.id}}
+                            <a href="newthread">Click to start a new thread here</a>
+                        {{else}}
+                            <a href="/auth/facebook">Login to Facebook to start a new thread</a>
+                        {{/if}}
+                      </p>
+                      {{#if data}}
+                      <table class="table forum table-striped">
+                        <thead>
+                          <tr>
+                            <th class="cell-stat"></th>
+                            <th class="cell-stat-2x hidden-xs hidden-sm">Discussion Title:</th>
+
+                            <th class="cell-stat-2x hidden-xs hidden-sm">Created On:</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each data}}
+                          <tr>
+                            <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
+                            <td>
+                              <h4><a href="/thread?id={{_id}}">{{content}}</a><br><small>{{description}}</small></h4>
+                            </td>
+
+                            <td class="hidden-xs hidden-sm">by <a href="#">{{name}}</a><br><small><i class="fa fa-clock-o"></i>{{created}}</small></td>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                    {{/if}}
+
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- /.row -->
 
     </div>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
-    <script src="/js/publicmap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv460IEdNuuTaGtHUXOAPuTF8O5K7Xpx0&libraries=places&callback=initMap"
-        async defer></script>
 
-  </body>
+</body>
+
 </html>

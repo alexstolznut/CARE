@@ -1,47 +1,13 @@
-2016-06-02T10:25:32.701-0700 W -        [initandlisten] Detected unclean shutdown - dbpath/mongod.lock is not empty.
-2016-06-02T10:25:32.720-0700 I JOURNAL  [initandlisten] journal dir=dbpath/journal
-2016-06-02T10:25:32.720-0700 I JOURNAL  [initandlisten] recover begin
-2016-06-02T10:25:32.992-0700 I JOURNAL  [initandlisten] recover lsn: 266466920
-2016-06-02T10:25:32.992-0700 I JOURNAL  [initandlisten] recover dbpath/journal/j._0
-2016-06-02T10:25:39.711-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:0 < lsn:266466920
-2016-06-02T10:25:39.712-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:94471 < lsn:266466920
-2016-06-02T10:25:39.748-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:145593 < lsn:266466920
-2016-06-02T10:25:39.748-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:196003 < lsn:266466920
-2016-06-02T10:25:39.748-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:246513 < lsn:266466920
-2016-06-02T10:25:39.749-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:553513 < lsn:266466920
-2016-06-02T10:25:39.799-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:656763 < lsn:266466920
-2016-06-02T10:25:39.805-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:708503 < lsn:266466920
-2016-06-02T10:25:39.807-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:812123 < lsn:266466920
-2016-06-02T10:25:39.808-0700 I JOURNAL  [initandlisten] recover skipping application of section more...
-2016-06-02T10:25:41.662-0700 I JOURNAL  [initandlisten] recover cleaning up
-2016-06-02T10:25:41.663-0700 I JOURNAL  [initandlisten] removeJournalFiles
-2016-06-02T10:25:41.731-0700 I JOURNAL  [initandlisten] recover done
-2016-06-02T10:25:42.606-0700 I JOURNAL  [initandlisten] preallocateIsFaster=true 3.98
-2016-06-02T10:25:43.232-0700 I JOURNAL  [initandlisten] preallocateIsFaster=true 4
-2016-06-02T10:25:44.817-0700 I JOURNAL  [initandlisten] preallocateIsFaster check took 3.014 secs
-2016-06-02T10:25:44.832-0700 I JOURNAL  [durability] Durability thread started
-2016-06-02T10:25:44.834-0700 I CONTROL  [initandlisten] MongoDB starting : pid=37587 port=27017 dbpath=dbpath 64-bit host=Manns-MacBook-Pro.local
-2016-06-02T10:25:44.834-0700 I CONTROL  [initandlisten] db version v3.0.7
-2016-06-02T10:25:44.834-0700 I CONTROL  [initandlisten] git version: nogitversion
-2016-06-02T10:25:44.854-0700 I JOURNAL  [journal writer] Journal writer thread started
-2016-06-02T10:25:44.872-0700 I CONTROL  [initandlisten] build info: Darwin elcapitanvm.local 15.0.0 Darwin Kernel Version 15.0.0: Wed Aug 26 16:57:32 PDT 2015; root:xnu-3247.1.106~1/RELEASE_X86_64 x86_64 BOOST_LIB_VERSION=1_49
-2016-06-02T10:25:44.872-0700 I CONTROL  [initandlisten] allocator: system
-2016-06-02T10:25:44.881-0700 I CONTROL  [initandlisten] options: { storage: { dbPath: "dbpath" }, systemLog: { destination: "file", path: "log/mongod.log" } }
-2016-06-02T10:25:47.223-0700 I NETWORK  [initandlisten] waiting for connections on port 27017
-2016-06-02T10:25:47.260-0700 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:62842 #1 (1 connection now open)
-2016-06-02T10:25:54.381-0700 I QUERY    [conn1] query cogs121.sessions query: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", $or: [ { expires: { $exists: false } }, { expires: { $gt: new Date(1464888353544) } } ] } planSummary: IXSCAN { _id: 1 } ntoskip:0 nscanned:1 nscannedObjects:1 keyUpdates:0 writeConflicts:0 numYields:0 nreturned:1 reslen:390 locks:{ Global: { acquireCount: { r: 2 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 649ms
-2016-06-02T10:25:54.579-0700 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:62855 #2 (2 connections now open)
-2016-06-02T10:25:54.835-0700 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:62856 #3 (3 connections now open)
-2016-06-02T10:25:55.144-0700 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:62857 #4 (4 connections now open)
-2016-06-02T10:25:55.190-0700 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:62858 #5 (5 connections now open)
-2016-06-02T10:25:55.265-0700 I WRITE    [conn3] update cogs121.sessions query: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_" } update: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", session: "{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"passport":{"user":{"id":"379477585556185","displayName":"Kann Chea","name...", expires: new Date(1466097954833) } nscanned:1 nscannedObjects:1 nMatched:1 nModified:1 keyUpdates:1 writeConflicts:0 numYields:0 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, MMAPV1Journal: { acquireCount: { w: 3 } }, Database: { acquireCount: { w: 1 } }, Collection: { acquireCount: { W: 1 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 423042 } } } 429ms
-2016-06-02T10:25:55.265-0700 I COMMAND  [conn3] command cogs121.$cmd command: update { update: "sessions", updates: [ { q: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_" }, u: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", session: "{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"passport":{"user":{"id":"379477585556185","displayName":"Kann Chea","name...", expires: new Date(1466097954833) }, upsert: true, multi: false } ], ordered: true, writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:55 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, MMAPV1Journal: { acquireCount: { w: 3 } }, Database: { acquireCount: { w: 1 } }, Collection: { acquireCount: { W: 1 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 423042 } } } 429ms
-2016-06-02T10:25:55.265-0700 I WRITE    [conn2] update cogs121.sessions query: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_" } update: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", session: "{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"passport":{"user":{"id":"379477585556185","displayName":"Kann Chea","name...", expires: new Date(1466097954792) } nscanned:1 nscannedObjects:1 nMatched:1 nModified:1 keyUpdates:1 writeConflicts:0 numYields:1 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, MMAPV1Journal: { acquireCount: { w: 4 } }, Database: { acquireCount: { w: 2 } }, Collection: { acquireCount: { W: 2 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 316121 } } } 437ms
-2016-06-02T10:25:55.265-0700 I COMMAND  [conn2] command cogs121.$cmd command: update { update: "sessions", updates: [ { q: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_" }, u: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", session: "{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"passport":{"user":{"id":"379477585556185","displayName":"Kann Chea","name...", expires: new Date(1466097954792) }, upsert: true, multi: false } ], ordered: true, writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:55 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, MMAPV1Journal: { acquireCount: { w: 4 } }, Database: { acquireCount: { w: 2 } }, Collection: { acquireCount: { W: 2 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 316121 } } } 471ms
-2016-06-02T10:25:55.265-0700 I WRITE    [conn1] update cogs121.sessions query: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_" } update: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", session: "{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"passport":{"user":{"id":"379477585556185","displayName":"Kann Chea","name...", expires: new Date(1466097954477) } nscanned:1 nscannedObjects:1 nMatched:1 nModified:1 keyUpdates:1 writeConflicts:0 numYields:1 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, MMAPV1Journal: { acquireCount: { w: 5 }, acquireWaitCount: { w: 1 }, timeAcquiringMicros: { w: 210 } }, Database: { acquireCount: { w: 2 } }, Collection: { acquireCount: { W: 2 }, acquireWaitCount: { W: 2 }, timeAcquiringMicros: { W: 108261 } } } 437ms
-2016-06-02T10:25:55.266-0700 I COMMAND  [conn1] command cogs121.$cmd command: update { update: "sessions", updates: [ { q: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_" }, u: { _id: "uib1EqgCuhI7v_BGWmMuTuYAkqtRKPp_", session: "{"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"passport":{"user":{"id":"379477585556185","displayName":"Kann Chea","name...", expires: new Date(1466097954477) }, upsert: true, multi: false } ], ordered: true, writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:55 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, MMAPV1Journal: { acquireCount: { w: 5 }, acquireWaitCount: { w: 1 }, timeAcquiringMicros: { w: 210 } }, Database: { acquireCount: { w: 2 } }, Collection: { acquireCount: { W: 2 }, acquireWaitCount: { W: 2 }, timeAcquiringMicros: { W: 108261 } } } 714ms
-2016-06-02T12:08:40.724-0700 I NETWORK  [conn3] end connection 127.0.0.1:62856 (4 connections now open)
-2016-06-02T12:08:40.724-0700 I NETWORK  [conn2] end connection 127.0.0.1:62855 (4 connections now open)
-2016-06-02T12:08:40.724-0700 I NETWORK  [conn1] end connection 127.0.0.1:62842 (4 connections now open)
-2016-06-02T12:08:40.724-0700 I NETWORK  [conn5] end connection 127.0.0.1:62858 (4 connections now open)
-2016-06-02T12:08:40.724-0700 I NETWORK  [conn4] end connection 127.0.0.1:62857 (4 connections now open)
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] MongoDB starting : pid=3860 port=27017 dbpath=dbpath 64-bit host=Vilan
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] targetMinOS: Windows Vista/Windows Server 2008
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] db version v3.2.4
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] git version: e2ee9ffcf9f5a94fad76802e28cc978718bb7a30
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] allocator: tcmalloc
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] modules: none
+2016-06-01T16:36:53.853-0700 I CONTROL  [initandlisten] build environment:
+2016-06-01T16:36:53.854-0700 I CONTROL  [initandlisten]     distarch: x86_64
+2016-06-01T16:36:53.854-0700 I CONTROL  [initandlisten]     target_arch: x86_64
+2016-06-01T16:36:53.854-0700 I CONTROL  [initandlisten] options: { storage: { dbPath: "dbpath" }, systemLog: { destination: "file", path: "log/mongod.log" } }
+2016-06-01T16:36:53.854-0700 E NETWORK  [initandlisten] listen(): bind() failed errno:10048 Only one usage of each socket address (protocol/network address/port) is normally permitted. for socket: 0.0.0.0:27017
+2016-06-01T16:36:53.854-0700 E STORAGE  [initandlisten] Failed to set up sockets during startup.
+2016-06-01T16:36:53.854-0700 I CONTROL  [initandlisten] dbexit:  rc: 48
