@@ -64,11 +64,13 @@ function initMap() {
         var eachdata = data.VAFacilityData;
         $.each(eachdata, function (index, value) {
           facility[index] = value.facility_id;
-          addresses[index] = value.address + "," + value.city;
+          addresses[index] = value.address + ", " + value.city;
           lati[index] = value.latitude;
           longi[index] = value.longitude;
         }); // end of second each
+    // console.log(facility[0] + "," + addresses[0] + "," + lati[0] + "," + longi[0]);
     getPTSD(facility, addresses, lati, longi);
+
 
     }); // end of second getjson
 
@@ -88,6 +90,7 @@ function initMap() {
               ind++;
             } // of of if
           }); // end of each
+    // console.log(fac[0] + "," + addr[0] + "," + lat[0] + "," + lon[0] + "," + percent[0] + "," + station[0]);
 
           comparePTSD(fac,addr, lat, lon, percent,station);
 
@@ -101,7 +104,7 @@ function initMap() {
       for (var i = 0; i<per.length; i++){
         for (var j=0; j<addr.length; j++){
           if (stat[i] == fac[j]) {
-            addToPercent[index] = [lat[i], lon[i], addr[j], per[i], stat[i]];
+            addToPercent[index] = [lat[j], lon[j], addr[j], per[i], stat[i]];
             index++;
           }
         }
@@ -110,6 +113,7 @@ function initMap() {
       // [0] is latitute, [1] is longitude
       //addToPercent[2] is the address, addToPercent[3] is the percentage of veterans in that address with PTSD
 
+    // console.log(fac[0] + "," + addr[0] + "," + lat[0] + "," + lon[0] + "," + per[0] + "," + stat[0]);
 
       circles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
@@ -117,16 +121,29 @@ function initMap() {
 
     function circles(addtoper) {
       for (var i=0; i<addtoper.length;i++) {
-        geocodeAddress()
-        // console.log(addtoper[i][0]);
-        // var myLatLng = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
-        //   var marker = new google.maps.Marker({
-        //     position: myLatLng,
-        //     map: map,
-        //     title: 'Hello World!'
+        // geocodeAddress([addtoper[i][2],addtoper[i][2]]);
+
+        // console.log(addtoper[333][1]);
+        // console.log(addtoper[333][0]);
+        var myLatLng = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+          });
+
+        //   gmarkers.push(marker);
+
+        //   google.maps.event.addListener(marker, 'mouseover', function() {
+        //     infowindow.setContent("alksdlaksn");
+        //     infowindow.open(map, marker);
         //   });
+
+        //   google.maps.event.addListener(marker, 'mouseout', function() {
+        //     infowindow.close();
+        //   });
+
         //   if (addtoper[i][4] == "664") {
-        //     console.log("found");
+        //     console.log(i);
         //   }
 
       }
