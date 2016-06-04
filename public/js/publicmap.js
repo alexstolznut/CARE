@@ -3,8 +3,12 @@ var gmarkers = [];
 var overlay;
 var layer;
 var map;
+var cityCircle;
+var outpatientcircles = [];
+var ptsdcircles = [];
+var currArray;
+function outpatient() {
 
-function newdata() {
     var percent = [];
     var station = [];
     var facility = [];
@@ -71,7 +75,7 @@ function newdata() {
         var cen = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
         // console.log(cen);
         // Add the circle for this city to the map.
-        var cityCircle = new google.maps.Circle({
+        cityCircle = new google.maps.Circle({
           strokeColor: '#FF0000',
           strokeOpacity: 0.8,
           strokeWeight: 0,
@@ -81,10 +85,107 @@ function newdata() {
           center: cen,
           radius: Math.sqrt(addtoper[i][3]) * 1000
         });
-        console.log(addtoper[i][3]);
+
+        // removeCircles(currArray);
+
+        outpatientcircles.push(cityCircle);
+        // console.log(addtoper[i][3]);
+      }
+    }
+    currArray = outpatientcircles;
+}
+
+function ptsd(){
+
+    var percent = [];
+    var station = [];
+    var facility = [];
+    var addresses = [];
+    var lati = [];
+    var longi = [];
+    $.getJSON("/facilities.json", function (data) {
+
+        // Iterate the groups first.
+        var eachdata = data.VAFacilityData;
+        $.each(eachdata, function (index, value) {
+          facility[index] = value.facility_id;
+          addresses[index] = value.address + ", " + value.city;
+          lati[index] = value.latitude;
+          longi[index] = value.longitude;
+        }); // end of second each
+    // console.log(facility[0] + "," + addresses[0] + "," + lati[0] + "," + longi[0]);
+    getPTSD(facility, addresses, lati, longi);
+
+
+    }); // end of second getjson
+
+
+    function getPTSD(fac, addr, lat, lon){
+      // var percentToStation = [];
+      var index = 0;
+
+      $.getJSON("/ptsd.json", function (data) {
+          // Iterate the groups first.
+          var ind = 0;
+          $.each(data, function (index, value) {
+            if (value.Category == "Station-Level Stats" && value.Item == "% of Veterans served with PTSD") {
+              var loc = value.Location;
+              percent[ind] = value.Value;
+              station[ind] = loc;
+              ind++;
+            } // of of if
+          }); // end of each
+    // console.log(fac[0] + "," + addr[0] + "," + lat[0] + "," + lon[0] + "," + percent[0] + "," + station[0]);
+
+          comparePTSD(fac,addr, lat, lon, percent,station);
+
+      }); // end of first get json
+      // return percentToStation;
+    }
+
+    function comparePTSD(fac,addr,lat,lon,per,stat) {
+      var addToPercent = [];
+      var index = 0;
+      for (var i = 0; i<per.length; i++){
+        for (var j=0; j<addr.length; j++){
+          if (stat[i] == fac[j]) {
+            addToPercent[index] = [lat[j], lon[j], addr[j], per[i], stat[i]];
+            index++;
+          }
+        }
+      }
+      // removeCircles(currArray);
+
+      circles(addToPercent); ///// TO DO : make circles based on PTSD percent
+    }
+
+
+    function circles(addtoper) {
+      for (var i=0; i<addtoper.length;i++) {
+        var cen = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+        // console.log(cen);
+        // Add the circle for this city to the map.
+        cityCircle = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 0,
+          fillColor: '#004B54',
+          fillOpacity: 0.35,
+          map: map,
+          center: cen,
+          radius: Math.sqrt(addtoper[i][3]) * 1000
+        });
+        ptsdcircles.push(cityCircle);
       }
     }
 
+    currArray = ptsdcircles;
+}
+
+function removeCircles(circlearray){
+    for(i=0; i<circlearray.length; i++){
+        circlearray[i].setMap(null);
+    }
 }
 
 function initMap() {
@@ -117,24 +218,24 @@ function initMap() {
     var counties = [];
     var i = 0;
 
-//     $.getJSON("/veteranenrollees.json", function (data) {
+    $.getJSON("/veteranenrollees.json", function (data) {
 
-//         var databycounty = data.DataByCounty;
-// //        console.log(databycounty);
-//         // Iterate the groups first.
-//         $.each(databycounty, function (index, value) {
+        var databycounty = data.DataByCounty;
+//        console.log(databycounty);
+        // Iterate the groups first.
+        $.each(databycounty, function (index, value) {
 
-// //            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
-// //            // Get all the categories
-// //            var StateAbbrev = databycounty[i].StateAbbrev;
-// //
-// //            counties[i] = databycounty[i].CountyName;
-// //            enrollees[i] = databycounty[i].VeteranEnrollees;
-//             i++;
+//            console.log(databycounty[i].CountyName + "  " + databycounty[i].VeteranEnrollees);
+//            // Get all the categories
+//            var StateAbbrev = databycounty[i].StateAbbrev;
+//
+//            counties[i] = databycounty[i].CountyName;
+//            enrollees[i] = databycounty[i].VeteranEnrollees;
+            i++;
 
 
-//         });
-//     });
+        });
+    });
 
     var percent = [];
     var station = [];
@@ -216,6 +317,11 @@ function initMap() {
         console.log(addtoper[i][3]);
       }
     }
+
+
+
+
+    // ptsd();
 
 
     $.get("/delphidata", function(data) {
