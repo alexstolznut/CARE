@@ -184,7 +184,7 @@ app.get('/delphidata', function(req,res){
     return console.error('error fetching client from pool', err);
   }
 
-  client.query("SELECT \"ADDR\" as address, \"CITY\" FROM cogs121_16_raw.sandag_clinics_all_prj", function(err, result) {
+  client.query("SELECT \"ADDR\" as address, \"CITY\", \"CLINIC\" FROM cogs121_16_raw.sandag_clinics_all_prj", function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
@@ -203,7 +203,7 @@ app.get('/delphidata', function(req,res){
 });
 
 app.post('/map1', function(req, res) {
-    
+
     console.log("search: " + req.body.location);
     var conString = process.env.DATABASE_CONNECTION_URL;
 

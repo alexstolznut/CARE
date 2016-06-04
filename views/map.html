@@ -77,20 +77,21 @@
 
         <div id="filter">
             <button type="button" onclick="outpatient()"class="btn btn-secondary">% of Veterans Receiving Mental Health Out-Patient Care</button>
+            <br>
             <button type="button" onclick="ptsd()"class="btn btn-secondary">% of Veterans served with PTSD</button>
+            <br>
+            <button type="button" onclick="receivedvacare()"class="btn btn-secondary">% of Veterans with PTSD that received any MH care</button>
+            <br>
+            <button type="button" onclick="cliniclocations()"class="btn btn-secondary">Clinic Locations</button>
 
-            <div id="header">Find a Clinic Near You</div>
-                <br>
-                <br>
+            <div id="header">Click a button to toggle between data.</div>
                 <br>
 
                 <form id="clinic-form" method="post" action="/map">
                     <center><fieldset class="form-group">
-                        <label id="loca" for="location">Search by Location:</label>
+                        <label id="loca" for="location">Zoom into a Location:</label>
                         <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
-                        <br>
                     </fieldset></center>
-                    <br>
                     <input type="submit" class="btn btn-lg btn-default" value="Find Clinics Around Me">
                 </form>
               </div>
