@@ -8,7 +8,7 @@ var outpatientcircles = [];
 var ptsdcircles = [];
 var currArray;
 function outpatient() {
-
+    removeCircles(currArray);
     var percent = [];
     var station = [];
     var facility = [];
@@ -86,8 +86,6 @@ function outpatient() {
           radius: Math.sqrt(addtoper[i][3]) * 1000
         });
 
-        // removeCircles(currArray);
-
         outpatientcircles.push(cityCircle);
         // console.log(addtoper[i][3]);
       }
@@ -96,7 +94,7 @@ function outpatient() {
 }
 
 function ptsd(){
-
+    removeCircles(currArray);
     var percent = [];
     var station = [];
     var facility = [];
@@ -154,7 +152,6 @@ function ptsd(){
           }
         }
       }
-      // removeCircles(currArray);
 
       circles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
@@ -314,8 +311,9 @@ function initMap() {
           center: cen,
           radius: Math.sqrt(addtoper[i][3]) * 1000
         });
-        console.log(addtoper[i][3]);
+        ptsdcircles.push(cityCircle);
       }
+      currArray = ptsdcircles;
     }
 
 
