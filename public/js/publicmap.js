@@ -2,6 +2,90 @@ var county = [];
 var gmarkers = [];
 var overlay;
 var layer;
+var map;
+
+function newdata() {
+    var percent = [];
+    var station = [];
+    var facility = [];
+    var addresses = [];
+    var lati = [];
+    var longi = [];
+    $.getJSON("/facilities.json", function (data) {
+
+        // Iterate the groups first.
+        var eachdata = data.VAFacilityData;
+        $.each(eachdata, function (index, value) {
+          facility[index] = value.facility_id;
+          addresses[index] = value.address + ", " + value.city;
+          lati[index] = value.latitude;
+          longi[index] = value.longitude;
+        }); // end of second each
+    // console.log(facility[0] + "," + addresses[0] + "," + lati[0] + "," + longi[0]);
+    getPTSD(facility, addresses, lati, longi);
+
+
+    }); // end of second getjson
+
+
+    function getPTSD(fac, addr, lat, lon){
+      // var percentToStation = [];
+      var index = 0;
+
+      $.getJSON("/ptsd.json", function (data) {
+          // Iterate the groups first.
+          var ind = 0;
+          $.each(data, function (index, value) {
+            if (value.Category == "Station-Level Stats" && value.Item == "% of Veterans w/PTSD receiving MH out- patient care") {
+              var loc = value.Location;
+              percent[ind] = value.Value;
+              station[ind] = loc;
+              ind++;
+            } // of of if
+          }); // end of each
+    // console.log(fac[0] + "," + addr[0] + "," + lat[0] + "," + lon[0] + "," + percent[0] + "," + station[0]);
+
+          comparePTSD(fac,addr, lat, lon, percent,station);
+
+      }); // end of first get json
+      // return percentToStation;
+    }
+
+    function comparePTSD(fac,addr,lat,lon,per,stat) {
+      var addToPercent = [];
+      var index = 0;
+      for (var i = 0; i<per.length; i++){
+        for (var j=0; j<addr.length; j++){
+          if (stat[i] == fac[j]) {
+            addToPercent[index] = [lat[j], lon[j], addr[j], per[i], stat[i]];
+            index++;
+          }
+        }
+      }
+
+      circles(addToPercent); ///// TO DO : make circles based on PTSD percent
+    }
+
+    function circles(addtoper) {
+      for (var i=0; i<addtoper.length;i++) {
+        var cen = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+        // console.log(cen);
+        // Add the circle for this city to the map.
+        var cityCircle = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 0,
+          fillColor: '#004B54',
+          fillOpacity: 0.35,
+          map: map,
+          center: cen,
+          radius: Math.sqrt(addtoper[i][3]) * 1000
+        });
+        console.log(addtoper[i][3]);
+      }
+    }
+
+}
 
 function initMap() {
 
@@ -109,11 +193,6 @@ function initMap() {
           }
         }
       }
-      // console.log(addToPercent);
-      // [0] is latitute, [1] is longitude
-      //addToPercent[2] is the address, addToPercent[3] is the percentage of veterans in that address with PTSD
-
-    // console.log(fac[0] + "," + addr[0] + "," + lat[0] + "," + lon[0] + "," + per[0] + "," + stat[0]);
 
       circles(addToPercent); ///// TO DO : make circles based on PTSD percent
     }
@@ -121,76 +200,21 @@ function initMap() {
 
     function circles(addtoper) {
       for (var i=0; i<addtoper.length;i++) {
-        // geocodeAddress([addtoper[i][2],addtoper[i][2]]);
-
-        // console.log(addtoper[333][1]);
-        // console.log(addtoper[333][0]);
-        // var myLatLng = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
-        //   var marker = new google.maps.Marker({
-        //     position: myLatLng,
-        //     map: map,
-        //   });
-
-        //   gmarkers.push(marker);
-
-        //   google.maps.event.addListener(marker, 'mouseover', function() {
-        //     infowindow.setContent("alksdlaksn");
-        //     infowindow.open(map, marker);
-        //   });
-
-        //   google.maps.event.addListener(marker, 'mouseout', function() {
-        //     infowindow.close();
-        //   });
-
-        //   if (addtoper[i][4] == "664") {
-        //     console.log(i);
-        //   }
-
+        var cen = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+        // console.log(cen);
+        // Add the circle for this city to the map.
+        var cityCircle = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 0,
+          fillColor: '#004B54',
+          fillOpacity: 0.35,
+          map: map,
+          center: cen,
+          radius: Math.sqrt(addtoper[i][3]) * 1000
+        });
+        console.log(addtoper[i][3]);
       }
-  //     overlay.draw = function() {
-  //       var projection = this.getProjection(), padding = 10;
-  //       var marker = layer.selectAll("svg").data(d3.entries(data)).each(transform)
-  //                         .enter().append("svg:svg")
-  //                         .each(transform)
-  //                         .attr("class", "marker");
-  //
-  //     marker.append("svg:circle")
-  //                       .attr("r", 4.5)
-  //                       .attr("cx", padding)
-  //                       .attr("cy", padding)
-  //                       .on("click", expandNode)
-  //                       .on("dbclick", contractNode)
-  //                       .on("mouseover",function(d){ console.log(d.key); })
-  //
-  //     marker.append("svg:text")
-  //                         .attr("x", padding + 7)
-  //                         .attr("y", padding)
-  //                         .attr("dy", ".31em")
-  //                         .attr("class", "marker_text")
-  //                         .text(function(d) {return d.key; });
-  //     function transform(d){
-  //       d = new google.maps.LatLng(d.value[1], d.value[0]);
-  //       d= projection.fromLatLngToDividePixel(d);
-  //       return d3.select(this).style("left", (d.x - padding))
-  //     }
-  //
-  //     function expandNode() {
-  //       d3.select(this).transition()
-  //                       .duration(100)
-  //                       .attr("r",7)
-  //     };
-  //
-  //     function contractNode(){
-  //       d3.select(this).transition()
-  //                       .duration(100)
-  //                       .attr("r",4.5)
-  //     };
-  //   };
-  //   overlay.setMap(map);
-  // }
-  //     }
-  //     }
-
     }
 
 
