@@ -86,6 +86,7 @@ function outpatient() {
           strokeWeight: 0,
           fillColor: '#004B54',
           fillOpacity: 0.35,
+          title: addtoper[i][3],
           map: map,
           center: cen,
           radius: Math.sqrt(addtoper[i][3]) * 1000
@@ -94,6 +95,7 @@ function outpatient() {
         outpatientcircles.push(cityCircle);
         // console.log(addtoper[i][3]);
       }
+            
     }
     currArray = outpatientcircles;
 }
