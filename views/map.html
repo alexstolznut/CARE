@@ -25,6 +25,12 @@
 
     <!--Lato Font-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>
+      
+    <style>
+        #button {
+            width: 100%;
+        }  
+    </style>  
 
 
   </head>
@@ -76,20 +82,22 @@
         <div id="map"></div>
 
         <div id="filter">
-            <button type="button" onclick="outpatient()" class="btn btn-secondary" style="margin-bottom: 10px;">% of Veterans Receiving Mental Health Out-Patient Care</button>
+            <h4 style="color:white; margin-left: -45%;">% of Veterans:</h4>
+            <button id="button" type="button" onclick="outpatient()" class="btn btn-secondary" style="margin-bottom: 10px;">Receiving MH Out-Patient Care</button>
             <br>
-            <button type="button" onclick="ptsd()" class="btn btn-secondary" style="margin-bottom: 10px;">% of Veterans served with PTSD</button>
+            <button id="button" type="button" onclick="ptsd()" class="btn btn-secondary" style="margin-bottom: 10px;">Served with PTSD</button>
             <br>
-            <button type="button" onclick="receivedvacare()" class="btn btn-secondary" style="margin-bottom: 10px;">% of Veterans with PTSD that received any MH care</button>
+            <button id="button" type="button" onclick="receivedvacare()" class="btn btn-secondary" style="margin-bottom: 10px;">With PTSD Received MH care</button>
             <br>
-            <button type="button" onclick="cliniclocations()" class="btn btn-secondary">Clinic Locations</button>
+            <h4 style="color:white; margin-left: -45%;">Or find clinics:</h4>
+            <button id="button" type="button" onclick="cliniclocations()" class="btn btn-secondary">Clinic Locations</button>
 
-            <div id="header">Click a button to toggle between data.</div>
+            <div id="header" style="margin-top: -20px; font-size: 20px;">Click a button to toggle between data.</div>
                 <br>
 
                 <form id="clinic-form" method="post" action="/map">
                     <center><fieldset class="form-group">
-                        <label id="loca" for="location">Zoom into a Location:</label>
+                        <label id="loca" for="location" style="font-size: 20px;">Zoom into a Location:</label>
                         <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
                     </fieldset></center>
                     <input type="submit" class="btn btn-lg btn-default" value="Find Clinics Around Me">
