@@ -1,13 +1,26 @@
-2016-06-03T12:57:13.004-0700 I CONTROL  [initandlisten] MongoDB starting : pid=7804 port=27017 dbpath=dbpath 64-bit host=Vilan
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten] targetMinOS: Windows Vista/Windows Server 2008
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten] db version v3.2.4
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten] git version: e2ee9ffcf9f5a94fad76802e28cc978718bb7a30
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten] allocator: tcmalloc
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten] modules: none
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten] build environment:
-2016-06-03T12:57:13.005-0700 I CONTROL  [initandlisten]     distarch: x86_64
-2016-06-03T12:57:13.006-0700 I CONTROL  [initandlisten]     target_arch: x86_64
-2016-06-03T12:57:13.006-0700 I CONTROL  [initandlisten] options: { storage: { dbPath: "dbpath" }, systemLog: { destination: "file", path: "log/mongod.log" } }
-2016-06-03T12:57:13.006-0700 E NETWORK  [initandlisten] listen(): bind() failed errno:10048 Only one usage of each socket address (protocol/network address/port) is normally permitted. for socket: 0.0.0.0:27017
-2016-06-03T12:57:13.006-0700 E STORAGE  [initandlisten] Failed to set up sockets during startup.
-2016-06-03T12:57:13.006-0700 I CONTROL  [initandlisten] dbexit:  rc: 48
+2016-06-03T13:32:44.517-0700 W -        [initandlisten] Detected unclean shutdown - dbpath/mongod.lock is not empty.
+2016-06-03T13:32:44.545-0700 I JOURNAL  [initandlisten] journal dir=dbpath/journal
+2016-06-03T13:32:44.570-0700 I JOURNAL  [initandlisten] recover begin
+2016-06-03T13:32:44.605-0700 I JOURNAL  [initandlisten] recover lsn: 354875
+2016-06-03T13:32:44.605-0700 I JOURNAL  [initandlisten] recover dbpath/journal/j._0
+2016-06-03T13:32:45.069-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:0 < lsn:354875
+2016-06-03T13:32:45.156-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:39785 < lsn:354875
+2016-06-03T13:32:45.158-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:92075 < lsn:354875
+2016-06-03T13:32:45.158-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:144735 < lsn:354875
+2016-06-03T13:32:45.158-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:249875 < lsn:354875
+2016-06-03T13:32:45.159-0700 I JOURNAL  [initandlisten] recover skipping application of section seq:302235 < lsn:354875
+2016-06-03T13:32:45.264-0700 I JOURNAL  [initandlisten] recover cleaning up
+2016-06-03T13:32:45.264-0700 I JOURNAL  [initandlisten] removeJournalFiles
+2016-06-03T13:32:45.302-0700 I JOURNAL  [initandlisten] recover done
+2016-06-03T13:32:45.772-0700 I JOURNAL  [initandlisten] preallocateIsFaster=true 4.9
+2016-06-03T13:32:46.077-0700 I JOURNAL  [durability] Durability thread started
+2016-06-03T13:32:46.077-0700 I JOURNAL  [journal writer] Journal writer thread started
+2016-06-03T13:32:46.078-0700 I CONTROL  [initandlisten] MongoDB starting : pid=90968 port=27017 dbpath=dbpath 64-bit host=Manns-MacBook-Pro.local
+2016-06-03T13:32:46.078-0700 I CONTROL  [initandlisten] db version v3.0.7
+2016-06-03T13:32:46.078-0700 I CONTROL  [initandlisten] git version: nogitversion
+2016-06-03T13:32:46.078-0700 I CONTROL  [initandlisten] build info: Darwin elcapitanvm.local 15.0.0 Darwin Kernel Version 15.0.0: Wed Aug 26 16:57:32 PDT 2015; root:xnu-3247.1.106~1/RELEASE_X86_64 x86_64 BOOST_LIB_VERSION=1_49
+2016-06-03T13:32:46.078-0700 I CONTROL  [initandlisten] allocator: system
+2016-06-03T13:32:46.078-0700 I CONTROL  [initandlisten] options: { storage: { dbPath: "dbpath" }, systemLog: { destination: "file", path: "log/mongod.log" } }
+2016-06-03T13:32:50.311-0700 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-06-03T13:32:53.913-0700 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:52267 #1 (1 connection now open)
+2016-06-03T16:07:59.869-0700 I NETWORK  [conn1] end connection 127.0.0.1:52267 (0 connections now open)
