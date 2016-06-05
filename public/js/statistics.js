@@ -65,7 +65,7 @@ $.getJSON("/vamentalhealth.json", function (data) {
             total4 = parseInt(number) + total4;
             itemCount2++;
         }
-        if(items == "Proportion of Veterans with Possible Mental Illness Seen in Inpatient Mental Health"){
+        if(items == "Proportion of Veterans with Confirmed Mental Illness Seen in Inpatient Mental Health"){
             var val = this.Value;
             var number = "";
             for (var i = 0, len = val.length; i < len-1; i++) {
