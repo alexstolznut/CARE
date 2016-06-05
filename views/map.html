@@ -22,18 +22,18 @@
 
     <!--Roboto Font-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-      
+
     <!--Monserrat Font -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
     <!--Lato Font-->
 <!--    <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300,100' rel='stylesheet' type='text/css'>-->
-      
+
     <style>
         #button {
             width: 100%;
-        }  
-    </style>  
+        }
+    </style>
 
 
   </head>
@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">A M E R I C A R E</a>
+                <a class="navbar-brand">A M E R I C A R E</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -63,10 +63,10 @@
                         <a href="/map">Find Clinics</a>
                     </li>
                     <li>
-                        <a href="/statistics">Statistics</a>
+                        <a href="/statistics">Getting Treatment</a>
                     </li>
                     <li>
-                        <a href="/forums">Forums</a>
+                        <a href="/forums">Ask Questions</a>
                     </li>
                     <li>
                         <a href="/learnmore">Learn More</a>
@@ -85,17 +85,20 @@
         <div id="map"></div>
 
         <div id="filter">
+            <div id="header" style="margin-top: -70px; font-size: 20px;">Click a button to toggle between data.</div>
+
             <h4 style="color:white; margin-left: -45%;">% of Veterans:</h4>
             <button id="button" type="button" onclick="outpatient()" class="btn btn-secondary" style="margin-bottom: 10px;">Receiving MH Out-Patient Care</button>
             <br>
             <button id="button" type="button" onclick="ptsd()" class="btn btn-secondary" style="margin-bottom: 10px;">Served with PTSD</button>
             <br>
-            <button id="button" type="button" onclick="receivedvacare()" class="btn btn-secondary" style="margin-bottom: 10px;">With PTSD Received MH care</button>
+            <button id="button" type="button" onclick="receivedvacare()" class="btn btn-secondary" style="margin-bottom: 10px;">With PTSD & Received MH care</button>
             <br>
             <h4 style="color:white; margin-left: -45%;">Or find clinics:</h4>
-            <button id="button" type="button" onclick="cliniclocations()" class="btn btn-secondary">Clinic Locations</button>
+            <button id="button" type="button" onclick="cliniclocations()" class="btn btn-secondary">Clinic Locations in San Diego</button>
 
-            <div id="header" style="margin-top: -20px; font-size: 20px;">Click a button to toggle between data.</div>
+                <br>
+                <br>
                 <br>
 
                 <form id="clinic-form" method="post" action="/map">
@@ -103,7 +106,7 @@
                         <label id="loca" for="location" style="font-size: 20px;">Zoom into a Location:</label>
                         <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
                     </fieldset></center>
-                    <input type="submit" class="btn btn-lg btn-default" value="Find Clinics Around Me">
+                    <input type="submit" class="btn btn-lg btn-default" value="Go to Location">
                 </form>
               </div>
         </div>

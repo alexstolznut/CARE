@@ -73,6 +73,12 @@ body {
     text-align: center;
 }
 
+.row h3 {
+    font-family: Montserrat;
+    font-size: 30px;
+    text-align: center;
+}
+
 .row p{
     font-family: Roboto;
     font-weight:300;

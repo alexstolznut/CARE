@@ -29,6 +29,11 @@ body {
     color:#21a1ea;
 }
 
+.row h1 {
+    font-family: Montserrat;
+    font-size: 20px;
+}
+
 #map {
     width: 50%;
     height: 90%;
@@ -276,9 +281,9 @@ body {
     font-weight: 700;
 }
 .aboutGoal {
-    background-color: #4db5f1;
+    background-color: #ABD9F3;
     padding: 50px;
-    color: white;
+    color: black;
 }
 
 p {
