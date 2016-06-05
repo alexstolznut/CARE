@@ -77,25 +77,34 @@ function outpatient() {
 
     function circles(addtoper) {
       for (var i=0; i<addtoper.length;i++) {
-        var cen = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
-        // console.log(cen);
-        // Add the circle for this city to the map.
-        cityCircle = new google.maps.Circle({
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
-          strokeWeight: 0,
-          fillColor: '#004B54',
-          fillOpacity: 0.35,
-          title: addtoper[i][3],
-          map: map,
-          center: cen,
-          radius: Math.sqrt(addtoper[i][3]) * 1000
-        });
+          var cen = {lat: parseFloat(addtoper[i][0]), lng: parseFloat(addtoper[i][1])};
+          // console.log(cen);
+          // Add the circle for this city to the map.
+          cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 0,
+            fillColor: '#004B54',
+            fillOpacity: 0.35,
+            title: addtoper[i][3],
+            map: map,
+            center: cen,
+            radius: Math.sqrt(addtoper[i][3]) * 1000
+          });
 
-        outpatientcircles.push(cityCircle);
-        // console.log(addtoper[i][3]);
+          outpatientcircles.push(cityCircle);
+
+          // //circle is the google.maps.Circle-instance
+          // google.maps.event.addListener(cityCircle,'mouseover',function(){
+          //      this.getMap().getDiv().setAttribute('title',this.get('title'));});
+
+          // google.maps.event.addListener(cityCircle,'mouseout',function(){
+          //      this.getMap().getDiv().removeAttribute('title');});
+
+          // console.log(addtoper[i][3]);
       }
-            
+
+
     }
     currArray = outpatientcircles;
 }
