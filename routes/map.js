@@ -1,4 +1,11 @@
 exports.view = function(req, res) {    
-	res.render('map',{});
+	if(req.user)
+	{
+		res.render('map',{});
+	}
+	else
+	{
+		res.redirect('/');
+	}
 }
 
