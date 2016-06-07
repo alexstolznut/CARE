@@ -5,6 +5,20 @@ body {
 
 /*---- Landing Page -----*/
 
+.aboutGoal {
+    background-color: #ABD9F3;
+    padding: 50px;
+    color: #303030;
+    height: auto;
+    font-family: Montserrat;
+}
+
+#learnmorediv {
+    background-color: white;
+    height: 100vh;
+
+}
+
 #map {
     width: 50%;
     height: 90%;
@@ -55,7 +69,7 @@ body {
     font-family: Montserrat;
     font-weight: 500;
     font-size: 20px;
-    color: white;
+    color: black;
     text-decoration: underline;
 }
 
@@ -250,14 +264,14 @@ body {
     height: 42.5vh;
 }
 
-.aboutGoal {
+/*.aboutGoal {
     width: 49%;
     height: 100%;
     float: left;
     margin-left: 0.5%;
     margin-right: 0.5%;
     text-align: center;
-}
+}*/
 
 .infoContent {
     margin-top: 5vh;
