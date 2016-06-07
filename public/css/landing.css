@@ -6,7 +6,7 @@ body {
 /*---- Landing Page -----*/
 
 .aboutGoal {
-    background-color: #ABD9F3;
+    background-color: #D7EEFF;
     padding: 50px;
     color: #303030;
     height: auto;
@@ -16,7 +16,6 @@ body {
 #learnmorediv {
     background-color: white;
     height: 100vh;
-
 }
 
 #map {
