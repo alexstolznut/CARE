@@ -82,7 +82,7 @@ $( document ).ready(function() {
      '<h1>'+data.content+'</h1>'+
      '<p><b>Posted by '+ data.name + '</b><br>' +
     	'<p>'+ data.description+'</p>'+
-    	edit + del + reply 
+    	edit + del + reply +
         '<form method="POST" action="/api/message/update">'+
         '<input type="hidden" name = "redirect" value="'+parent+'">'+
         '<input type="hidden" name = "id" value="'+data._id+'">'+
