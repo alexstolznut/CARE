@@ -165,10 +165,15 @@ app.get("/thread", function(req,res){
     console.log(req.user);
     res.render('thread',{data: req.user });
 });
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/'); //Can fire before session is destroyed?
+});
 //app.put("/api/message/:id(\\d+)", router.message.update);
 //app.delete("/api/message/:id(\\d+)", router.message.delete);
 app.get("/", function(req, res) {
-   res.render('landing', {});
+    if(req.user) res.redirect('/forums');
+    else res.render('landing', {});
 });
 
 app.get('/delphidata', function(req,res){
