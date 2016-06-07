@@ -79,12 +79,19 @@ body {
 }
 
 #header {
-    font-family: Roboto;
-    font-weight: 600;
-    font-size: 30px;
+    font-family: Montserrat;
+    font-weight: 200;
+    font-size: 15px;
     color: white;
     text-align: center;
     padding-top: 80px;
+    line-height: 13px;
+    letter-spacing: 0px;
+}
+
+#filter h4 {
+    font-family: Montserrat;
+    font-size: 15px;
 }
 
 #location {
@@ -108,7 +115,8 @@ body {
     /*background-color: #97D4C6;*/
     background-color:#004B54;
     text-align: center;
-    padding: 15px;
+    padding: 4px;
+    overflow: auto;
 }
 
 #landing {

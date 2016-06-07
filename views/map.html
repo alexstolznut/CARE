@@ -44,70 +44,72 @@
 <!--    <script src="https://d3js.org/queue.v1.min.js"></script>-->
 
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand">A M E R I C A R E</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/map">Find Clinics</a>
-                    </li>
-                    <li>
-                        <a href="/statistics">Getting Treatment</a>
-                    </li>
-                    <li>
-                        <a href="/forums">Ask Questions</a>
-                    </li>
-                    <li>
-                        <a href="/learnmore">Learn More</a>
-                    </li>
-                    <li>
-                        <a href="/logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+  <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand">A M E R I C A R E</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                  <li>
+                      <a href="/map">Explore Map</a>
+                  </li>
+                  <li>
+                      <a href="/statistics">Getting Treatment</a>
+                  </li>
+                  <li>
+                      <a href="/forums">Ask Questions</a>
+                  </li>
+                  <li>
+                      <a href="/learnmore">Learn More</a>
+                  </li>
+                  <li>
+                      <a href="/logout">Logout</a>
+                  </li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
 
     <div id="explore" style="height: 93vh;">
         <div id="map"></div>
 
         <div id="filter">
-            <div id="header" style="margin-top: -70px; font-size: 20px;">Click a button to toggle between data.</div>
+            <img src="./image/legend.png">
+            <div id="header" style="margin-top: -70px; font-size: 15px;">Click a button to toggle between data (MH = Mental Health).</div>
 
-            <h4 style="color:white; margin-left: -45%;">% of Veterans:</h4>
-            <button id="button" type="button" onclick="outpatient()" class="btn btn-secondary" style="margin-bottom: 10px;">Receiving MH Out-Patient Care</button>
-            <br>
-            <button id="button" type="button" onclick="ptsd()" class="btn btn-secondary" style="margin-bottom: 10px;">Served with PTSD</button>
-            <br>
-            <button id="button" type="button" onclick="receivedvacare()" class="btn btn-secondary" style="margin-bottom: 10px;">With PTSD & Received MH care</button>
-            <br>
-            <h4 style="color:white; margin-left: -45%;">Or find clinics:</h4>
-            <button id="button" type="button" onclick="cliniclocations()" class="btn btn-secondary">Clinic Locations in San Diego</button>
+                <h4 style="color:white; margin-left: -45%;">% of Veterans:</h4>
+                <button id="button" type="button" onclick="outpatient()" class="btn btn-secondary" style="margin-bottom: 10px;">Receiving MH Out-Patient Care</button>
+                <br>
+                <button id="button" type="button" onclick="ptsd()" class="btn btn-secondary" style="margin-bottom: 10px;">Served with PTSD</button>
+                <br>
+                <button id="button" type="button" onclick="receivedvacare()" class="btn btn-secondary" style="margin-bottom: 10px;">With PTSD & Received MH care</button>
+                <br>
+                <h4 style="color:white; margin-left: -45%;">Or find clinics:</h4>
+                <button id="button" type="button" onclick="cliniclocations()" class="btn btn-secondary">Clinic Locations in San Diego</button>
 
                 <br>
                 <br>
-                <br>
-
                 <form id="clinic-form" method="post" action="/map">
-                    <center><fieldset class="form-group">
-                        <label id="loca" for="location" style="font-size: 20px;">Zoom into a Location:</label>
+                    <fieldset class="form-group">
+                        <h4 style="color:white; margin-left: -25%;">Zoom into a Location:</h4>
                         <input name="location" type="text" class="form-control" id="location" placeholder="Type in a Location" required>
-                    </fieldset></center>
+                    </fieldset>
                     <input type="submit" class="btn btn-lg btn-default" value="Go to Location">
                 </form>
+
+
+
               </div>
         </div>
 
