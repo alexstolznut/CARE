@@ -34,7 +34,7 @@
     "jsonfile": "^2.3.1",
     "method-override": "^2.3.6",
     "mongodb": "^2.1.14",
-    "mongoose": "^4.4.10",
+    "mongoose": "^5.7.7",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "pg": "^4.5.5",
